@@ -6,12 +6,22 @@
 			<?php echo h($offerta['Offerta']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Nome'); ?></dt>
-		<dd>
-			<?php echo h($offerta['Offerta']['nome']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User'); ?></dt>
+                
+                <?php if($offerta_privata): ?>
+                <dt><?php echo __('Nome'); ?></dt>
+                    <dd>
+                        <?php if(!$offerta['Offerta']['pubblica']) echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
+                        Offerta riservata. Contatta il CSV di riferimento. 
+                    </dd>
+                <?php else: ?>    
+                    <dt><?php echo __('Nome'); ?></dt>
+                    <dd>
+                            <?php echo h($offerta['Offerta']['nome']); ?>
+                            &nbsp;
+                    </dd>                    
+		<?php endif; ?>
+                
+                <dt><?php echo __('User'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($offerta['User']['username'], array('controller' => 'users', 'action' => 'view', $offerta['User']['id'])); ?>
 			&nbsp;
@@ -26,6 +36,18 @@
 			<?php echo h($offerta['Offerta']['offerta']); ?>
 			&nbsp;
 		</dd>
+                
+                
+                <?php if($offerta_privata): ?>
+                <dt>Recapiti per la provincia di Riferimento (dell'utente che ha inserito l'offerta)</dt>
+                <dd>
+		<?php if(!$offerta['Offerta']['pubblica'])
+                    echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
+                	<?php echo nl2br($this->Text->autoLink(h($riferimenti['Provincia']['riferimenti']))); ?>
+			&nbsp;
+		</dd>
+                
+                <?php else: ?>
 		<dt><?php echo __('Telefono'); ?></dt>
 		<dd>
 			<?php echo h($offerta['Offerta']['telefono']); ?>
@@ -36,14 +58,8 @@
 			<?php echo h($offerta['Offerta']['email']); ?>
 			&nbsp;
 		</dd>
+                
+                <?php endif; ?>
+                
 	</dl>
-</div>
-<div class="actions">
-	<h3>Azioni</h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Offerta'), array('action' => 'edit', $offerta['Offerta']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Offerta'), array('action' => 'delete', $offerta['Offerta']['id']), null, __('Are you sure you want to delete # %s?', $offerta['Offerta']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Offerte'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Offerta'), array('action' => 'add')); ?> </li>
-	</ul>
 </div>

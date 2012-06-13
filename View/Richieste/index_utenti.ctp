@@ -66,17 +66,17 @@
 	<tr>
 		<td><?php echo h($richiesta['Richiesta']['id']); ?>&nbsp;</td>
                 <td>
-			<?php echo $this->Html->link($richiesta['Tipo']['nome'], array('controller' => 'richieste', 'action' => 'index', 'tipo' => $richiesta['Tipo']['id'])); ?>
-                    <br/><?php
-                    if (!is_null($richiesta['Richiesta']['scadenza'])){
-                                        
+                    <?php echo $this->Html->link($richiesta['Tipo']['nome'], array('controller' => 'richieste', 'action' => 'index', 'tipo' => $richiesta['Tipo']['id'])); ?>
+                    <br/>
+                    <?php
+                    if (!is_null($richiesta['Richiesta']['scadenza'])){                                        
                         echo 'indic. entro il:'.  $this->Time->format('d-m-Y',$richiesta['Richiesta']['scadenza']); 
                         if( $richiesta['Richiesta']['scadenza'] < date('Y-m-d') ) {
                             echo '<span class="btn btn-warning">';
                             echo $this->Html->image('icons/error.png');
                             echo $this->Html->image('icons/date.png');
                             echo ' probabilmente scaduta</span>';
-                        }        
+                        }
                     }
                     ?>
                 </td>
@@ -88,7 +88,7 @@
                         echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
                     if($richiesta['Richiesta']['pubblica']) 
                         echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
-                    
+                    echo ' ';
                     
                     if($richiesta['Richiesta']['completa']) {
                         echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 

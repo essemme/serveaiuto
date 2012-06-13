@@ -17,9 +17,20 @@
                 
                 
                 if(AuthComponent::user('role_id') < 3 ) {
-                    echo $this->Form->input('verificata');
-                    echo $this->Form->input('in_evidenza');                
-                    echo $this->Form->input('pubblica');
+                    
+                                                    
+                    if(AuthComponent::user('role_id') == 1 ) {
+                        echo $this->Html->image('verificata.png', array('style' => 'float:left; margin: 3px;'));
+                        echo $this->Form->input('verificata');
+
+                        echo $this->Html->image('in_evidenza.png', array('style' => 'float:left; margin: 3px;'));
+                        echo $this->Form->input('in_evidenza'); 
+                        
+                        echo $this->Html->image('org.png', array('style' => 'float:left; margin: 3px;'));
+                        echo $this->Form->input('pubblica', array(
+                            'label' => 'visibile anche alle organizzazioni (non solo agli ammnistratori)')
+                        );                        
+                    }
                     echo $this->Form->input('completa');
                 }
 	?>

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
  * 
  */
 
-class UsersController extends AppController {    
+class UsersController extends AppController {
     
     public $paginate = array('order' => array('id' => 'desc'));
 
@@ -46,8 +46,8 @@ class UsersController extends AppController {
                 $this->Session->setFlash('Autenticato correttamente', 'default', array('class' => 'information')); //, 'auth'
                 
                 //remove the "all" province session filter for anonymous user; next request will set users's default filter
-                $this->Session->delete('provincia_id');
-                
+                $this->Session->delete('provincia_id');            
+                                
                 return $this->redirect($this->Auth->redirect('/richieste'));
             } else {
                 $this->Session->setFlash('Combinazione di username e password errata', 'default', array('class' => 'error')); //, 'auth'

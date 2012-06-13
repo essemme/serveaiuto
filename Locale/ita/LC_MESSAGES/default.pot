@@ -1,0 +1,539 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: serveaiuto 1.0\n"
+"POT-Creation-Date: 2012-06-13 17:13+0200\n"
+"PO-Revision-Date: 2012-06-13 17:24+0100\n"
+"Last-Translator: Stefano Manfredini <info@stefanomanfredini.info>\n"
+"Language-Team: ITA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: Controller\OfferteController.php:126;189;243
+msgid "Invalid offerta"
+msgstr "Offerta non valida"
+
+#: Controller\OfferteController.php:163;193
+msgid "The offerta has been saved"
+msgstr "Offerta salvata"
+
+#: Controller\OfferteController.php:166;196
+msgid "The offerta could not be saved. Please, try again."
+msgstr "Offerta non salvata. Riprovare"
+
+#: Controller\OfferteController.php:246
+msgid "Offerta deleted"
+msgstr "Offerta eliminata"
+
+#: Controller\OfferteController.php:249
+msgid "Offerta was not deleted"
+msgstr "Offerta non eliminata."
+
+#: Controller\ProvinceController.php:45;79;108
+msgid "Invalid provincia"
+msgstr ""
+
+#: Controller\ProvinceController.php:59;83
+msgid "The provincia has been saved"
+msgstr ""
+
+#: Controller\ProvinceController.php:62;86
+msgid "The provincia could not be saved. Please, try again."
+msgstr ""
+
+#: Controller\ProvinceController.php:111
+msgid "Provincia deleted"
+msgstr ""
+
+#: Controller\ProvinceController.php:114
+msgid "Provincia was not deleted"
+msgstr ""
+
+#: Controller\RichiesteController.php:222;270;311
+msgid "Invalid richiesta"
+msgstr "Richiesta non valida"
+
+#: Controller\RichiesteController.php:280
+msgid "The richiesta has been saved"
+msgstr "Richiesta salvata"
+
+#: Controller\RichiesteController.php:314
+msgid "Richiesta deleted"
+msgstr "Richiesta eliminata"
+
+#: Controller\RichiesteController.php:317
+msgid "Richiesta was not deleted"
+msgstr "Richiesta non eliminata."
+
+#: Controller\UsersController.php:101;137;164;198
+msgid "Invalid user"
+msgstr "Utente non valido"
+
+#: Controller\UsersController.php:115;141;168
+msgid "The user has been saved"
+msgstr "Utente salvato"
+
+#: Controller\UsersController.php:118;144;171
+msgid "The user could not be saved. Please, try again."
+msgstr "utente non salvato. Riprovare"
+
+#: Controller\UsersController.php:201
+msgid "User deleted"
+msgstr "utente eliminato"
+
+#: Controller\UsersController.php:204
+msgid "User was not deleted"
+msgstr "Utente non eliminato, rirpovare"
+
+#: Plugin\Filter\Controller\Component\FilterComponent.php:58;109;131
+msgid "Filter model not found: %s"
+msgstr "Modello per il filtro non rovato: %s"
+
+#: Plugin\Filter\Controller\Component\FilterComponent.php:209
+msgid "Selector method \"%s\" not found in model \"%s\" for field \"%s\"!"
+msgstr ""
+
+#: Plugin\Filter\Model\Behavior\FilteredBehavior.php:97
+msgid "No value present for required field %s and default value not present"
+msgstr ""
+
+#: Plugin\Filter\View\Elements\filter_form_end.ctp:15
+#: View\Offerte\edit.ctp:47
+#: View\Province\add.ctp:13
+#: View\Province\edit.ctp:14
+#: View\Users\add.ctp:26
+#: View\Users\edit.ctp:26
+#: View\Users\profilo.ctp:14
+msgid "Submit"
+msgstr "Invia"
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:64;190
+msgid "Exit"
+msgstr "Esci"
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:70
+msgid "Skipping "
+msgstr "Sto saltando.."
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:79
+msgid "Could not delete search index"
+msgstr "Impossibile cancellare l'indice della ricerca"
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:116
+msgid "Use Database Config"
+msgstr ""
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:173
+msgid "Possible Models based on your current database:"
+msgstr ""
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:186
+msgid "Enter one or more numbers from the list above separated by a space, or type in the names of one or more other models, 'a' for all or 'q' to exit"
+msgstr ""
+
+#: Plugin\Searchable\Console\Command\BuildSearchIndexShell.php:235
+msgid "You entered an invalid model \""
+msgstr ""
+
+#: Plugin\Searchable\View\SearchIndexes\index.ctp:27
+#: View\Province\index.ctp:35
+#: View\Users\index.ctp:43
+msgid "previous"
+msgstr "precedente"
+
+#: Plugin\Searchable\View\SearchIndexes\index.ctp:29
+#: View\Province\index.ctp:37
+#: View\Users\index.ctp:45
+msgid "next"
+msgstr "seguente"
+
+#: View\Elements\Projects\_index_row.ctp:45
+#: View\Province\index.ctp:20
+#: View\Province\view.ctp:78;123;188
+#: View\Users\index.ctp:28
+msgid "Edit"
+msgstr "Modifica"
+
+#: View\Elements\Projects\_index_row.ctp:48
+#: View\Province\index.ctp:21
+#: View\Province\view.ctp:79;124;189
+#: View\Users\edit.ctp:32
+#: View\Users\index.ctp:29
+msgid "Delete"
+msgstr "Elimina"
+
+#: View\Elements\Projects\_index_row.ctp:48
+#: View\Offerte\index.ctp:118
+#: View\Province\index.ctp:21
+#: View\Province\view.ctp:30;79;124;189
+#: View\Richieste\index.ctp:148
+#: View\Richieste\index_utenti.ctp:142
+#: View\Richieste\view.ctp:107
+#: View\Richieste\view_utenti.ctp:106
+#: View\Users\edit.ctp:32
+#: View\Users\index.ctp:29
+#: View\Users\view.ctp:46
+msgid "Are you sure you want to delete # %s?"
+msgstr "Sicuro di voler eliminare l'elemento n. %s?"
+
+#: View\Elements\Projects\_index_row.ctp:52
+msgid "Add subproject"
+msgstr ""
+
+#: View\Helper\GoogleMapV3Helper.php:415
+msgid "Map cannot be displayed!"
+msgstr "La mappa non può essere mostrata!"
+
+#: View\Helper\GoogleMapV3Helper.php:561
+msgid "Enter your address"
+msgstr "Inserisci il tuo indirizzo"
+
+#: View\Helper\GoogleMapV3Helper.php:562
+msgid "Get directions"
+msgstr "Ottieni indicazioni"
+
+#: View\Helper\GoogleMapV3Helper.php:1082
+msgid "Map"
+msgstr "Mappa"
+
+#: View\Layouts\default.ctp:77
+msgid "Home"
+msgstr "Home"
+
+#: View\Layouts\default.ctp:156
+msgid "Registrati"
+msgstr ""
+
+#: View\Offerte\index.ctp:4
+msgid "Offerte"
+msgstr ""
+
+#: View\Offerte\index.ctp:29
+#: View\Province\index.ctp:9
+#: View\Province\view.ctp:27;58;106;161
+#: View\Users\add.ctp:29
+#: View\Users\edit.ctp:29
+#: View\Users\index.ctp:12
+#: View\Users\view.ctp:43
+msgid "Actions"
+msgstr "Azioni"
+
+#: View\Offerte\view.ctp:2;34
+#: View\Province\view.ctp:101
+msgid "Offerta"
+msgstr ""
+
+#: View\Offerte\view.ctp:4
+#: View\Province\view.ctp:4;46;97;142
+#: View\Users\view.ctp:4
+msgid "Id"
+msgstr ""
+
+#: View\Offerte\view.ctp:11;17
+#: View\Province\view.ctp:98
+msgid "Nome"
+msgstr ""
+
+#: View\Offerte\view.ctp:24
+#: View\Users\activate.ctp:2
+#: View\Users\view.ctp:2
+msgid "User"
+msgstr "Utente"
+
+#: View\Offerte\view.ctp:29
+msgid "Tipo"
+msgstr ""
+
+#: View\Offerte\view.ctp:51
+#: View\Province\view.ctp:102;147
+msgid "Telefono"
+msgstr ""
+
+#: View\Offerte\view.ctp:56
+#: View\Province\view.ctp:49;103;148
+#: View\Users\view.ctp:19
+msgid "Email"
+msgstr ""
+
+#: View\Province\add.ctp:4
+msgid "Add Provincia"
+msgstr "Aggiungi Provincia"
+
+#: View\Province\edit.ctp:4
+#: View\Province\view.ctp:29
+msgid "Edit Provincia"
+msgstr "Modifica Provincia"
+
+#: View\Province\index.ctp:2
+msgid "Province"
+msgstr "Province"
+
+#: View\Province\index.ctp:19
+#: View\Province\view.ctp:77;122;187
+#: View\Users\index.ctp:27
+msgid "View"
+msgstr "Esamina"
+
+#: View\Province\view.ctp:2;9
+msgid "Provincia"
+msgstr ""
+
+#: View\Province\view.ctp:14
+msgid "Riferimenti"
+msgstr ""
+
+#: View\Province\view.ctp:19
+msgid "Aperta"
+msgstr ""
+
+#: View\Province\view.ctp:30
+msgid "Delete Provincia"
+msgstr ""
+
+#: View\Province\view.ctp:31
+msgid "List Province"
+msgstr ""
+
+#: View\Province\view.ctp:32
+msgid "New Provincia"
+msgstr ""
+
+#: View\Province\view.ctp:33
+#: View\Users\add.ctp:32
+#: View\Users\edit.ctp:33
+#: View\Users\view.ctp:47
+msgid "List Users"
+msgstr ""
+
+#: View\Province\view.ctp:34;88
+#: View\Users\view.ctp:48
+msgid "New User"
+msgstr ""
+
+#: View\Province\view.ctp:35
+msgid "List Offerte"
+msgstr ""
+
+#: View\Province\view.ctp:36;133
+msgid "New Offerta"
+msgstr ""
+
+#: View\Province\view.ctp:37
+msgid "List Richieste"
+msgstr ""
+
+#: View\Province\view.ctp:38;198
+msgid "New Richiesta"
+msgstr ""
+
+#: View\Province\view.ctp:42
+msgid "Related Users"
+msgstr ""
+
+#: View\Province\view.ctp:47
+#: View\Users\view.ctp:9
+msgid "Username"
+msgstr ""
+
+#: View\Province\view.ctp:48
+#: View\Users\view.ctp:14
+msgid "Password"
+msgstr ""
+
+#: View\Province\view.ctp:50
+msgid "Provincia Id"
+msgstr ""
+
+#: View\Province\view.ctp:51
+msgid "Password Reset"
+msgstr "Reimposta password"
+
+#: View\Province\view.ctp:52
+msgid "Activation Code"
+msgstr "Codice di attivazione"
+
+#: View\Province\view.ctp:53
+msgid "Active"
+msgstr "Attivo"
+
+#: View\Province\view.ctp:54
+msgid "Role Id"
+msgstr ""
+
+#: View\Province\view.ctp:55;159
+#: View\Users\view.ctp:25
+msgid "Created"
+msgstr "Inserito il"
+
+#: View\Province\view.ctp:56;160
+#: View\Users\view.ctp:30
+msgid "Modified"
+msgstr "Ultima modifica"
+
+#: View\Province\view.ctp:57
+msgid "Facebook Id"
+msgstr ""
+
+#: View\Province\view.ctp:93
+msgid "Related Offerte"
+msgstr ""
+
+#: View\Province\view.ctp:99;149
+msgid "User Id"
+msgstr ""
+
+#: View\Province\view.ctp:100;144
+msgid "Tipo Id"
+msgstr ""
+
+#: View\Province\view.ctp:104
+msgid "Terminata"
+msgstr ""
+
+#: View\Province\view.ctp:105;153
+msgid "Verificata"
+msgstr ""
+
+#: View\Province\view.ctp:138
+msgid "Related Richieste"
+msgstr ""
+
+#: View\Province\view.ctp:143
+#: View\Richieste\view.ctp:26
+#: View\Richieste\view_public.ctp:24
+#: View\Richieste\view_utenti.ctp:24
+msgid "Cosa Serve"
+msgstr ""
+
+#: View\Province\view.ctp:145
+msgid "Dove A Chi"
+msgstr "Dove, a chi"
+
+#: View\Province\view.ctp:146
+msgid "Testo"
+msgstr ""
+
+#: View\Province\view.ctp:150
+msgid "Scadenza"
+msgstr ""
+
+#: View\Province\view.ctp:151
+msgid "Attiva"
+msgstr ""
+
+#: View\Province\view.ctp:152
+msgid "In Evidenza"
+msgstr ""
+
+#: View\Province\view.ctp:154
+msgid "Indirizzo Reale"
+msgstr ""
+
+#: View\Province\view.ctp:155
+msgid "Localita Gmaps"
+msgstr "Indirizzo per google maps"
+
+#: View\Province\view.ctp:156
+msgid "Completa"
+msgstr ""
+
+#: View\Province\view.ctp:157
+msgid "Lat"
+msgstr ""
+
+#: View\Province\view.ctp:158
+msgid "Lon"
+msgstr ""
+
+#: View\Richieste\add.ctp:13
+msgid "Add Richiesta"
+msgstr "Aggiungi richiesta"
+
+#: View\Richieste\add.ctp:70
+#: View\Richieste\edit.ctp:74
+msgid "Salva"
+msgstr ""
+
+#: View\Richieste\edit.ctp:13
+msgid "Edit Richiesta"
+msgstr "Modifica richiesta"
+
+#: View\Richieste\index.ctp:4
+#: View\Richieste\index_utenti.ctp:4
+msgid "Richieste"
+msgstr ""
+
+#: View\Richieste\view.ctp:3
+#: View\Richieste\view_public.ctp:2
+#: View\Richieste\view_utenti.ctp:2
+msgid "Richiesta"
+msgstr ""
+
+#: View\Richieste\view.ctp:74
+#: View\Richieste\view_utenti.ctp:73
+msgid "Invia"
+msgstr ""
+
+#: View\Users\add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: View\Users\edit.ctp:4
+#: View\Users\profilo.ctp:4
+#: View\Users\view.ctp:45
+msgid "Edit User"
+msgstr ""
+
+#: View\Users\index.ctp:2
+msgid "Users"
+msgstr ""
+
+#: View\Users\index.ctp:37
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Pagina {:page} di  {:pages}, mostro {:current} elementi su {:count} totali, partendo dall'elemento {:start}, fino al {:end}"
+
+#: View\Users\view.ctp:35
+msgid "Facebook id"
+msgstr ""
+
+#: View\Users\view.ctp:46
+msgid "Delete User"
+msgstr "Elimina utente"
+
+#: Model\Offerta.php:validation
+#: for field offerta
+#: Model\Provincia.php:validation
+#: for field provincia;validation for field riferimenti
+#: Model\Tipo.php:validation
+#: for field nome
+msgid "notempty"
+msgstr "non può essere vuoto"
+
+#: Model\Offerta.php:validation
+#: for field email
+msgid "email"
+msgstr ""
+
+#: Model\Provincia.php:validation
+#: for field aperta
+msgid "boolean"
+msgstr ""
+
+#: Model\Richiesta.php:validation
+#: for field cosa_serve
+msgid "Cosa serve? questo campo non può essere vuoto"
+msgstr ""
+
+#: Model\Richiesta.php:validation
+#: for field email
+msgid "Email non valida"
+msgstr ""
+
+#: Model\Richiesta.php:validation
+#: for field scadenza
+msgid "Inserisci una data corretta.."
+msgstr ""
+

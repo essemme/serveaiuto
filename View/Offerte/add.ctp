@@ -14,9 +14,18 @@
 		echo $this->Form->input('email');
                 
                 if(AuthComponent::user('role_id') < 3 ) {
+                    echo $this->Html->image('verificata.png', array('style' => 'float:left; margin: 3px;'));
                     echo $this->Form->input('verificata');
-                    echo $this->Form->input('in_evidenza');                
-                    echo $this->Form->input('pubblica');
+                    
+                    echo $this->Html->image('in_evidenza.png', array('style' => 'float:left; margin: 3px;'));
+                    echo $this->Form->input('in_evidenza');   
+                    
+                    echo $this->Html->image('org.png', array('style' => 'float:left; margin: 3px;'));
+                    echo $this->Form->input('pubblica', array(
+                        'label' => 'visibile anche alle organizzazioni (non solo agli ammnistratori)', 
+                        'checked' => $this->Session->read('aperta')
+                        )
+                    );
                     echo $this->Form->input('completa');
                 }
                 

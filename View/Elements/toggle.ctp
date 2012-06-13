@@ -2,10 +2,17 @@
 <?php
 if(is_null($value) || !$value) $value = '0';
 
-echo $this->Html->image(''. (string)$value .'.png', array('url' => array('action' => 'attiva_disattiva', $record_id, $field)));
+if(!isset($label))
+$label = $field;
 
-if($field == 'in_evidenza') $field = 'evidenza';
-echo $field; 
+echo $this->Html->image(''. (string)$value .'.png', array(
+    'url' => array('action' => 'attiva_disattiva', $record_id, $field),
+    'title' => $label
+    )
+);
+
+if($label == 'in_evidenza') $label = 'evidenza';
+echo $label; 
  
 ?>
 </div>

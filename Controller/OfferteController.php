@@ -126,9 +126,27 @@ class OfferteController extends AppController {
 			throw new NotFoundException(__('Invalid offerta'));
 		}
                 
-                $this->_check_ownership_and_with_redirect($id);
+                $offerta =  $this->Offerta->read(null, $id);
                 
-		$this->set('offerta', $this->Offerta->read(null, $id));
+                $offerta_privata = false;
+                if($this->Auth->user('role_id') == 2) {
+                    if(!$offerta['Offerta']['pubblica']) {
+                        
+                        $offerta_privata = true;
+                        $riferimenti = $this->Offerta->User->find('first', array(
+                            'recursive' => 2,
+                            'conditions' => array('User.id' => $offerta['Offerta']['user_id']),
+                            'contain' => array('Provincia')
+                            )
+                        );
+                        $this->set(compact('riferimenti'));
+//                        $this->Session->setFlash("spiacente, l'offerta è privata - riservata agli amministratori - puoi contattare il csv di riferimento per infromazioni");
+//                        $this->redirect($this->referer());
+                    } 
+                } else {
+                    $this->_check_ownership_and_with_redirect($id);
+                }
+		$this->set(compact('offerta','offerta_privata'));
 	}
 
 /**
@@ -151,8 +169,9 @@ class OfferteController extends AppController {
 		//$users = $this->Offerta->User->find('list');
 		$tipi = $this->Offerta->Tipo->find('list');                
                 $province = $this->Offerta->Provincia->find('list');
+                                
 		$this->set(compact('users', 'tipi','province'));
-		$this->set(compact('users', 'tipi'));
+		
 	}
 
 /**

@@ -7,6 +7,12 @@
             <a class="btn" href="/offerte/index/completa:0">Offerte ancora attive</a>
             <a class="btn" href="/offerte/index/completa:1">Offerte completate</a>
         </p> 
+        <p>
+            <p>
+                <?php echo $this->Html->link('Aggiungi nuova offerta', array('controller' => 'offerte', 'action' => 'add'), array('class'=>"btn btn-info")); ?>
+
+            </p>
+        </p>
         </div>
         <div class="span3">
             <?php echo $this->Filter->filterForm('Offerta', array('legend' => 'Filtra'));  ?>
@@ -58,10 +64,20 @@
         
 	<tr>
 		<td><?php echo h($offerta['Offerta']['id']); ?>&nbsp;</td>
-		<td><?php echo h($offerta['Offerta']['nome']); ?>&nbsp;
-                    <?php if(AuthComponent::user('role_id') < 3): ?>
+		<td>
+                    <?php if(!$offerta['Offerta']['pubblica']) echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
+                    
+                    <?php if(
+                            AuthComponent::user('role_id') == 1 || 
+                            $offerta['Offerta']['pubblica'] || 
+                            $offerta['Offerta']['user_id'] == AuthComponent::user('id') 
+                            ): ?>
+                    <?php echo h($offerta['Offerta']['nome']); ?>&nbsp;
+                    
                         <br><?php echo h($offerta['Offerta']['telefono']); ?>                    
                         <br><?php echo h($offerta['Offerta']['email']); ?>
+                    <?php else : ?>
+                                 Offerta "privata" (i recapiti sono accessibili solo agli admin).
                     <?php endif; ?>
                 </td>
 		
@@ -73,7 +89,9 @@
                         echo $this->Html->image('verificato.png', array('title' => 'Offerta verificata', 'alt' => 'Offerta verificata'));
                     if($offerta['Offerta']['in_evidenza']) 
                         echo $this->Html->image('in_evidenza.png', array('title' => 'Offerta in evidenza', 'alt' => 'Offerta in evidenza'));
-                    
+                    if($offerta['Offerta']['pubblica']) 
+                        echo $this->Html->image('org.png', array('title' => 'Offerta visibile alle organizzazioni (non solo agli admin)', 'alt' => 'Offerta visibile alle organizzazioni (non solo agli admin)'));
+                    echo ' ';
                     if($offerta['Offerta']['completa']) echo '<strike>';
                     echo nl2br($this->Text->truncate(h($offerta['Offerta']['offerta']))); 
                     if($offerta['Offerta']['completa']) echo '</strike>';
@@ -85,7 +103,10 @@
                 <td>                    
                     <?php echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'in_evidenza', 'value' => $offerta['Offerta']['in_evidenza'])) ?>
                     <?php echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'verificata', 'value' => $offerta['Offerta']['verificata'])) ?>
-                    <?php //echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'pubblica', 'value' => $offerta['Offerta']['pubblica'])) ?>
+                    <?php 
+                    if(AuthComponent::user('role_id') == 1) 
+                        echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'pubblica', 'value' => $offerta['Offerta']['pubblica'], 'label' => 'visibile alle org.')) 
+                     ?>
                 </td>
 		<td class="actions">
 			<?php echo $this->Html->link('Esamina', array('action' => 'view', $offerta['Offerta']['id']), array('class' => 'btn btn-mini')); ?>

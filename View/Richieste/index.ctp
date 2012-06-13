@@ -8,9 +8,16 @@
                 <a class="btn" href="/richieste/index/completa:0">Richieste ancora attive</a>
                 <a class="btn" href="/richieste/index/completa:1">Richieste completate</a>
             </p>   
+            <p>
+                <?php echo $this->Html->link('Aggiungi nuova richiesta', array('controller' => 'richieste', 'action' => 'add'), array('class'=>"btn btn-info")); ?>
+
+            </p>
         </div>
         <div class="span3">
-            <?php echo $this->Filter->filterForm('Richiesta', array('legend' => 'Filtra'));  ?>
+            <?php 
+             //if(AuthComponent::user('role_id') < 3)     
+                echo $this->Filter->filterForm('Richiesta', array('legend' => 'Filtra'));  
+            ?>
         </div>
     </div>
         
@@ -89,7 +96,7 @@
                         echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
                     if($richiesta['Richiesta']['pubblica']) 
                         echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
-                    
+                    echo ' ';
                     if($richiesta['Richiesta']['completa']) {
                         echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 
                     } else {

@@ -83,6 +83,8 @@ class AppController extends Controller {
         $this->_common_elements();
         
         $this->_provincia_attuale();
+        
+        $this->_check_aperta();
                 
         //includere TinyAuth
         $this->Auth->authenticate = array('Form');
@@ -99,6 +101,22 @@ class AppController extends Controller {
         parent::beforeFilter();
     }
     
+    /**
+     * sets the session var "aperta" to the corresponding value of users's default province.
+     * it is used to precompile (check) the "public" / visible to org. level users falg in offer / request add action
+     */
+        protected function _check_aperta() {
+            if($this->Auth->user('id')) {
+                if(!$this->Session->check('aperta')) {
+                    App::uses('Provincia', 'Model');
+                    $Provincia = new Provincia;
+                    $provincia = $Provincia->find('first',array('conditions' => array('Provincia.id' => $this->Auth->user('provincia_id'))));
+                    if($provincia['Provincia']['id'] == $this->Session->read('provincia_id')) {
+                        $this->Session->write('aperta',$provincia['Provincia']['aperta']);                        
+                    }
+                }
+            }
+        }
     
         function beforeFacebookSave(){
             $this->Connect->authUser['User']['email'] = $this->Connect->user('email');
