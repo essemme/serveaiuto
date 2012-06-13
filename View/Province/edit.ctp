@@ -1,0 +1,15 @@
+<div class="province form">
+<?php echo $this->Form->create('Provincia');?>
+	<fieldset>
+		<legend><?php echo __('Edit Provincia'); ?></legend>
+	<?php
+		echo $this->Form->input('id');
+		echo $this->Form->input('provincia');
+		echo $this->Form->input('riferimenti');
+		echo $this->Form->input('aperta');
+		//echo $this->Form->input('Offerta');
+		//echo $this->Form->input('Richiesta');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit'));?>
+</div>

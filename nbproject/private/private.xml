@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Layouts/default.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Controller/UsersController.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Config/bootstrap.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Pages/home.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Controller/AppController.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Elements/sidebar.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Elements/_sidebar_block.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Model/Richiesta.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Controller/RichiesteController.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/view.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/index.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/add.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/edit.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Model/Offerta.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Controller/OfferteController.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Offerte/index.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Offerte/add.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Offerte/edit.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Offerte/view.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Config/core.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Model/User.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Config/facebook.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Users/login.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Users/edit.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/index_public.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Richieste/index_utenti.ctp</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Controller/ProvinceController.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/Model/Provincia.php</file>
+        <file>file:/C:/wamp/www/cakephp2/serveaiuto/View/Province/index.ctp</file>
+    </open-files>
+</project-private>
