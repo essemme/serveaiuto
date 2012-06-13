@@ -1,10 +1,17 @@
 <div class="offerte index">
+    <div class="row"> 
+        <div class="span6">
     <h2><?php if(AuthComponent::user('role_id') > 2) echo 'Le tue ';   echo __('Offerte');?></h2>
         <p>
             <a class="btn" href="/offerte/index/completa:all">Vedi tutte le offerte</a>
-            <a class="btn" href="/offerte/index/completa:0">Vedi solo offerte ancora attive</a>
-            <a class="btn" href="/offerte/index/completa:1">Vedi solo offerte completate</a>
+            <a class="btn" href="/offerte/index/completa:0">Offerte ancora attive</a>
+            <a class="btn" href="/offerte/index/completa:1">Offerte completate</a>
         </p> 
+        </div>
+        <div class="span3">
+            <?php echo $this->Filter->filterForm('Offerta', array('legend' => 'Filtra'));  ?>
+        </div>
+    </div>
 	<table class="table table-bordered table-striped" >
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

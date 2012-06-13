@@ -6,15 +6,20 @@
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		echo $this->Form->input('email');
-                echo $this->Form->input('role_id', array(
-                    'type' => 'select', 
-                    'options' => array(
-                        '1' => 'admin',
-                        '2' => 'organizzazione, richiedente',
-                        '3' => 'utente, offerente'
-                        ) 
-                    )
-                );
+                if(AuthComponent::user('role_id') == 1) {
+                    echo $this->Form->input('role_id', array(
+                        'type' => 'select', 
+                        'options' => array(
+                            '1' => 'admin',
+                            '2' => 'organizzazione, richiedente',
+                            '3' => 'utente, offerente'
+                            ) 
+                        )
+                    );
+
+                    echo $this->Form->input('active'); 
+                    
+                }
 		echo $this->Form->input('provincia_id');
 	?>
 	</fieldset>

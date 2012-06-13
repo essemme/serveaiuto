@@ -25,6 +25,26 @@ class RichiesteController extends AppController {
         'Provincia'
     );
     
+    //Needed for Filter Component
+    var $filters = array
+        (  
+            'index' => array  
+            (  
+                'Richiesta' => array  
+                (  
+                    'Richiesta.cosa_serve' => array('div' => false),  
+                    'Richiesta.dove_a_chi' => array('div' => false),  
+                    //'Richiesta.id' => array('condition' => '='),  
+//                    'Richiesta.user_id' => array  
+//                    (  
+//                        'type' => 'select',  
+//                        'label' => 'Inserito da',  
+//                        'selector' => 'getOwnerList'  
+//                    )  
+                )  
+            )  
+        );  
+    
 //    public $helpers = array('Cache');
 //    
 //    public $cacheAction = array(

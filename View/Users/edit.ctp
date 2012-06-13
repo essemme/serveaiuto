@@ -16,6 +16,8 @@
                         ) 
                     )
                 );
+                if(AuthComponent::user('role_id') == 1)
+                    echo $this->Form->input('active'); 
                 
 		echo $this->Form->input('provincia_id');
                 echo $this->Form->input('facebook_id', array('type' => 'text'));

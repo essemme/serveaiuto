@@ -174,7 +174,7 @@ CakePlugin::load('AddressFinder');
 CakePlugin::load('Bookmarklet');
 CakePlugin::load('TwitterBootstrap');
 CakePlugin::load('Facebook');
-//CakePlugin::load('Batch');
+CakePlugin::load('Filter');
 
 $config['Google'] = array(
                                 'zoom' => 10,

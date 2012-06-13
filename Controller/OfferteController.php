@@ -21,6 +21,27 @@ class OfferteController extends AppController {
         'Provincia'
     );
     
+    //Needed for Filter Component
+    var $filters = array
+        (  
+            'index' => array  
+            (  
+                'Offerta' => array  
+                (  
+                    'Offerta.nome' => array('div' => false),  
+                    'Offerta.offerta' => array('div' => false),
+                    
+                    //'Richiesta.id' => array('condition' => '='),  
+//                    'Richiesta.user_id' => array  
+//                    (  
+//                        'type' => 'select',  
+//                        'label' => 'Inserito da',  
+//                        'selector' => 'getOwnerList'  
+//                    )  
+                )  
+            )  
+        );  
+    
 //    public $helpers = array('Cache');
 //    
 //    public $cacheAction = array(

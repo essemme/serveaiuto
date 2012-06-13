@@ -35,7 +35,7 @@ class AppController extends Controller {
     public $components = array(
         'DebugKit.Toolbar', 
         'Session', 
-        
+          
         'Auth' => array(
             'loginAction' => array(
                 'controller' => 'users',
@@ -55,16 +55,20 @@ class AppController extends Controller {
             )
         ),
         'Facebook.Connect' => array('model' => 'User'),        
-        'SignMeUp.SignMeUp' 
+        'SignMeUp.SignMeUp', 
 //        => array(
 //            'activation_field' => false, //do not require activation by verification email, yet
 //            'useractive_field' => false,
 //        )
 
-        //'Tools.Tiny'
-        
+        //'Tools.Tiny'        
+        'Filter.Filter'
     );
+    
     public $helpers = array('Html','Js', 'Form', 'Time', 'Text', 'Session',
+        'Filter.Filter' => array(  
+            'nopersist' => array('index')
+        ), 
         'Facebook.Facebook' => array('redirect' => true),    
         "TB" => array(
             "className" => "TwitterBootstrap.TwitterBootstrap"
@@ -72,6 +76,7 @@ class AppController extends Controller {
         'GoogleMapV3',
         'AddressFinder.AddressFinder'
     );
+    
     
     public function beforeFilter() {
         

@@ -32,6 +32,7 @@
                 ?>
                 </fieldset>
         <?php echo $this->Form->end('Accedi');?>
+            <p>P.S. Se usi facebook, entra sempre usando il pulsante apposito in basso. Non inserire la tua password di facebook qui sopra, questo progamma (per la tua sicurezza) non può conoscerla</p>
         </div>
         
         <p>Dimenticato la password? Puoi <a class="btn" href="/forgotten_password">reimpostarla</a></p>
@@ -43,6 +44,7 @@
         <p>Oppure utilizza il tuo profilo Facebook.</p>
         <p>Puoi utilizzare il tuo profilo facebook come se fosse un utente di questo sito.</p>
         <span class="btn" style="color: whitesmoke;"><?php echo $this->Facebook->login(array('perms' => 'email,read_stream,publish_stream', 'label'=>'FB Accedi', 'redirect' => '/richieste/index')); ?></span>
+        
     </div>
     
 </div>

@@ -1,10 +1,19 @@
 <div class="richieste index">
-	<h2><?php echo __('Richieste');?></h2>
-        <p>
-            <a class="btn" href="/richieste/index/completa:all">Vedi tutte le richieste</a>
-            <a class="btn" href="/richieste/index/completa:0">Vedi solo richieste ancora attive</a>
-            <a class="btn" href="/richieste/index/completa:1">Vedi solo richieste completate</a>
-        </p>        
+    <div class="row"> 
+        <div class="span6">
+            <h2><?php echo __('Richieste');?></h2>
+            <p> Puoi selezionare solo le richieste incomplete, oppure vedere solo quelle già completate, o tutte</p>
+            <p>
+                <a class="btn" href="/richieste/index/completa:all">Vedi tutte le richieste</a>
+                <a class="btn" href="/richieste/index/completa:0">Richieste ancora attive</a>
+                <a class="btn" href="/richieste/index/completa:1">Richieste completate</a>
+            </p>   
+        </div>
+        <div class="span3">
+            <?php echo $this->Filter->filterForm('Richiesta', array('legend' => 'Filtra'));  ?>
+        </div>
+    </div>
+        
         <?php //echo $this->Batch->create('Richiesta')?>	
 	<table class="table table-bordered table-striped" >
 	<tr>
