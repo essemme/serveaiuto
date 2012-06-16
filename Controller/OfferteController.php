@@ -9,7 +9,8 @@ class OfferteController extends AppController {
 
     public $paginate = array('Offerta' => array( 'order' => array('Offerta.in_evidenza' => 'desc', 'Offerta.id' => 'desc'), 'contain' => array(
         'User' => array('fields' => array('id','username', 'email')),
-        'Tipo',        
+        'Tipo', 
+        'Categoria',
         'Provincia'
         ) 
     ));
@@ -17,6 +18,7 @@ class OfferteController extends AppController {
     public $defaultContain = array(
         'User' => array('fields' => array('id','username', 'email')),
         'Tipo',
+        'Categoria',
         'OfferteProvince',
         'Provincia'
     );
@@ -169,8 +171,8 @@ class OfferteController extends AppController {
 		//$users = $this->Offerta->User->find('list');
 		$tipi = $this->Offerta->Tipo->find('list');                
                 $province = $this->Offerta->Provincia->find('list');
-                                
-		$this->set(compact('users', 'tipi','province'));
+                $categorie = $this->Offerta->Categoria->find('list');             
+		$this->set(compact('users', 'tipi','province', 'categorie'));
 		
 	}
 
@@ -202,7 +204,8 @@ class OfferteController extends AppController {
 		$users = $this->Offerta->User->find('list');
 		$tipi = $this->Offerta->Tipo->find('list');
                 $province = $this->Offerta->Provincia->find('list');
-		$this->set(compact('users', 'tipi','province'));
+                $categorie = $this->Offerta->Categoria->find('list');    
+		$this->set(compact('users', 'tipi','province', 'categorie'));
 	}
         
         

@@ -81,6 +81,7 @@
                     ?>
                 </td>
 		<td>
+                    <strong>
                     <?php 
                     if($richiesta['Richiesta']['verificata']) 
                         echo $this->Html->image('verificato.png', array('title' => 'richiesta verificata', 'alt' => 'richiesta verificata')) . ' ';
@@ -96,8 +97,11 @@
                         echo h($richiesta['Richiesta']['cosa_serve']); 
                     }
                     
-                    ?>
                     
+                    ?>
+                    </strong>
+                    <br /> 
+                            [<?php echo $richiesta['Categoria']['categoria']; ?>]
                 </td>
 		
 		<td>

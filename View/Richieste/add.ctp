@@ -18,11 +18,15 @@
                     <?php                   
                     echo $this->Form->input('cosa_serve', array('label' => 'cosa serve: es. una stampante per la modulistica.. alimentari non deperibili.. volontari per animazione con bambini..' ));
                     echo $this->Form->input('tipo_id');
+                    echo $this->Form->input('categoria_id', array('empty' => '...'));
                     echo $this->Form->input('dove_a_chi', array('label' => 'dove, a chi: es. associazione XY presso campo protezione civile di..' ));
                     echo $this->Form->input('testo', array('label' => 'altre informazioni. Visibili solo agli utenti registrati. NON mettere dati personali qui!' ));
+                    
                     echo $this->Form->input('telefono',array('label' => 'telefono per contatti. NON mettere il cellulare di altre persone se non esplicitamente autorizzato! ' ) );
                     echo $this->Form->input('email', array('label' => 'email per risposta tramite il modulo sul sito (NON viene visualizzata pubblicamente)' ));
                     echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.id')));
+                    
+                    
                     if($this->Session->read('Auth.User.role_id') < 3) {    
                         
                         echo $this->Form->input('attiva', array('type' => 'hidden', 'value' => 1));                        
@@ -30,11 +34,14 @@
                             echo $this->Html->image('in_evidenza.png', array('style' => 'float:left; margin: 3px;'));
                             echo $this->Form->input('in_evidenza');
                             
-                            echo $this->Html->image('verificta.png', array('style' => 'float:left; margin: 3px;'));
+                            echo $this->Html->image('verificata.png', array('style' => 'float:left; margin: 3px;'));
                             echo $this->Form->input('verificata');
                             
                             echo $this->Html->image('pubblica.png', array('style' => 'float:left; margin: 3px;'));
                             echo $this->Form->input('pubblica');
+                            
+                            echo $this->Html->image('segnala.png', array('style' => 'float:left; margin: 3px;'));
+                            echo $this->Form->input('segnala_in_indice_sito');
                         }
                         echo $this->Form->input('completa');
                     }

@@ -11,6 +11,16 @@ MySQL - 5.1.53-community-log : Database - serveaiuto
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `categorie` */
+
+DROP TABLE IF EXISTS `categorie`;
+
+CREATE TABLE `categorie` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 /*Table structure for table `offerte` */
 
 DROP TABLE IF EXISTS `offerte`;
@@ -20,6 +30,7 @@ CREATE TABLE `offerte` (
   `nome` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `tipo_id` int(11) DEFAULT NULL,
+  `categoria_id` smallint(6) DEFAULT NULL,
   `offerta` text COLLATE utf8_unicode_ci,
   `telefono` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -73,6 +84,7 @@ CREATE TABLE `richieste` (
   `pubblica` tinyint(1) unsigned DEFAULT '0',
   `cosa_serve` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `tipo_id` int(11) DEFAULT NULL,
+  `categoria_id` smallint(6) DEFAULT NULL,
   `dove_a_chi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `testo` text COLLATE utf8_unicode_ci,
   `telefono` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -82,6 +94,8 @@ CREATE TABLE `richieste` (
   `attiva` tinyint(1) DEFAULT '1',
   `in_evidenza` tinyint(1) DEFAULT '0',
   `verificata` tinyint(1) DEFAULT '0',
+  `supertop` tinyint(1) DEFAULT '0',
+  `segnala_in_indice_sito` tinyint(1) DEFAULT '0',
   `indirizzo_reale` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `localita_gmaps` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `completa` tinyint(1) DEFAULT '0',
@@ -90,7 +104,7 @@ CREATE TABLE `richieste` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 /*Table structure for table `tipi` */
 

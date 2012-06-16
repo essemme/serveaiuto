@@ -13,7 +13,8 @@ class RichiesteController extends AppController {
 
     public $paginate = array('Richiesta' => array( 'order' => array('in_evidenza' => 'desc', 'created' => 'desc'), 'contain' => array(
         'User' => array('fields' => array('id','username', 'email'), 'Provincia'),
-        'Tipo',        
+        'Tipo',   
+        'Categoria',
         'Provincia'
         ) 
     ));
@@ -21,6 +22,7 @@ class RichiesteController extends AppController {
     public $defaultContain = array(
         'User' => array('fields' => array('id','username', 'email'), 'Provincia'),
         'Tipo',
+        'Categoria',
         'ProvinceRichieste',
         'Provincia'
     );
@@ -55,7 +57,7 @@ class RichiesteController extends AppController {
 //    );
     
     public function beforeFilter() {
-        $this->Auth->allow(array('display', 'index_public', 'view_public') ); //'index', 'view', 
+        $this->Auth->allow(array('display', 'index_public', 'view_public', 'esporta') ); //'index', 'view', 
                 
         if($this->request->action == 'index') {
             if(!$this->Auth->loggedIn()) {
@@ -210,6 +212,15 @@ class RichiesteController extends AppController {
             $this->index();
         }
 
+        
+        public function esporta($provincia_id = null) {
+            
+            $this->layout = 'basic';
+            $richieste = $this->Richiesta->esportabili($provincia_id);
+            $this->set('richieste', $richieste);
+        }
+        
+        
         /**
  * view method
  *
@@ -253,8 +264,9 @@ class RichiesteController extends AppController {
 		}
 		$tipi = $this->Richiesta->Tipo->find('list');
                 $province = $this->Richiesta->Provincia->find('list');
+                $categorie = $this->Richiesta->Categoria->find('list');
 		//$users = $this->Richiesta->User->find('list');
-		$this->set(compact('tipi', 'users', 'province'));
+		$this->set(compact('tipi', 'users', 'province', 'categorie'));
 	}
 
 /**
@@ -291,9 +303,10 @@ class RichiesteController extends AppController {
 		}
                 $this->Session->write('redirect', $this->referer());
 		$tipi = $this->Richiesta->Tipo->find('list');
+                $categorie = $this->Richiesta->Categoria->find('list');
                 $province = $this->Richiesta->Provincia->find('list');
 		//$users = $this->Richiesta->User->find('list');
-		$this->set(compact('tipi', 'users', 'province'));
+		$this->set(compact('tipi', 'users', 'province', 'categorie'));
 	}
 
 /**

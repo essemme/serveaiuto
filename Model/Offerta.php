@@ -62,32 +62,39 @@ class Offerta extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+                'Categoria' => array(
+			'className' => 'Categoria',
+			'foreignKey' => 'categoria_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
         
-        
-        /**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'OfferteProvince' => array(
-			'className' => 'OfferteProvince',
-			'foreignKey' => 'offerta_id',
-                        
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		
-	);
+//        
+//        /**
+// * hasMany associations
+// *
+// * @var array
+// */
+//	public $hasMany = array(
+//		'OfferteProvince' => array(
+//			'className' => 'OfferteProvince',
+//			'foreignKey' => 'offerta_id',
+//                        
+//			'dependent' => false,
+//			'conditions' => '',
+//			'fields' => '',
+//			'order' => '',
+//			'limit' => '',
+//			'offset' => '',
+//			'exclusive' => '',
+//			'finderQuery' => '',
+//			'counterQuery' => ''
+//		),
+//		
+//	);
         
         
 /**

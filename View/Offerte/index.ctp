@@ -95,7 +95,11 @@
                     if($offerta['Offerta']['completa']) echo '<strike>';
                     echo nl2br($this->Text->truncate(h($offerta['Offerta']['offerta']))); 
                     if($offerta['Offerta']['completa']) echo '</strike>';
-                ?>&nbsp;</td>
+                    
+                ?>&nbsp;
+                <br /> 
+                            [<?php echo $offerta['Categoria']['categoria']; ?>]
+                </td>
                 <td>
                         <?php if($dove != '') echo $dove; ?>
                     

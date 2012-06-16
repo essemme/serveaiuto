@@ -67,6 +67,13 @@ class Richiesta extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+                'Categoria' => array(
+			'className' => 'Categoria',
+			'foreignKey' => 'categoria_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -123,4 +130,32 @@ class Richiesta extends AppModel {
 			'insertQuery' => ''
 		),
 	);        
+        
+        
+        public function esportabili($provincia_id = null) {
+            
+            $conditions ['Richiesta.completa'] = 0;  
+            $conditions ['Richiesta.segnala_in_indice_sito'] = 1;   
+            
+            if(!is_null($provincia_id)) {
+                $this->bindModel(array('hasOne'=>array('ProvinceRichieste')), false);
+                //$this->paginate['Richiesta']['group'] = 'Richiesta.id';
+                $conditions['ProvinceRichieste.provincia_id'] = $provincia_id;
+                
+            }
+            $esportabili = $this->find('all', array(
+                'conditions' => $conditions,
+                'fields' => array('id', 'cosa_serve', 'categoria_id', 'tipo_id'),
+                'contain' => array(
+                    'Categoria',
+                    'Tipo',
+                    'ProvinceRichieste' => array('Provincia')
+                ),
+                'group' => array('Richiesta.cosa_serve'),
+                'order' => array('Richiesta.categoria_id')
+            )
+            );
+            return $esportabili;
+        }
+        
 }

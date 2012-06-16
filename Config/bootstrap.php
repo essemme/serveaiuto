@@ -125,7 +125,8 @@ Cache::config('default', array('engine' => 'File'));
 
 Inflector::rules('plural', array(
 	    'irregular' => array('organizzazione' => 'organizzazioni', 'volontario' => 'volontari',
-	    		'richiesta' => 'richieste', 'tipo' => 'tipi', 'offerta' => 'offerte', 'provincia' => 'province' )
+	    		'richiesta' => 'richieste', 'tipo' => 'tipi', 'offerta' => 'offerte', 'provincia' => 'province',
+                        'categoria' => 'categorie')
 	    ,
 	    'uninflected' => array('localita')//,'categorieeventi')
 	    )
@@ -134,7 +135,8 @@ Inflector::rules('plural', array(
 
 Inflector::rules('singular', array(
             'irregular' => array('organizzazioni' => 'organizzazione', 'volontari' => 'volontario',
-	    		'richieste' => 'richiesta', 'tipi' => 'tipo', 'offerte' => 'offerta', 'province' => 'provincia' )    
+	    		'richieste' => 'richiesta', 'tipi' => 'tipo', 'offerte' => 'offerta', 'province' => 'provincia',
+                        'categorie' => 'categoria' )    
 	    ,
 	    'uninflected' => array('localita')//,'categorieeventi')
 	    )

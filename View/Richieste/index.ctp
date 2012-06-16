@@ -96,6 +96,9 @@
                         echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
                     if($richiesta['Richiesta']['pubblica']) 
                         echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
+                     if($richiesta['Richiesta']['segnala_in_indice_sito']) 
+                        echo $this->Html->image('segnala.png', array('title' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)', 'alt' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)'));
+                    
                     echo ' ';
                     if($richiesta['Richiesta']['completa']) {
                         echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 
@@ -103,6 +106,9 @@
                         echo h($richiesta['Richiesta']['cosa_serve']); 
                     }
                     ?>
+                    </strong>
+                    <br />
+                            [<?php echo $richiesta['Categoria']['categoria']; ?>]
                      
                 </td>		
 		<td>
@@ -133,6 +139,8 @@
                     <?php echo $this->element('toggle', array('record_id' => $richiesta['Richiesta']['id'], 'field'  => 'in_evidenza', 'value' => $richiesta['Richiesta']['in_evidenza'])) ?>
                     <?php echo $this->element('toggle', array('record_id' => $richiesta['Richiesta']['id'], 'field'  => 'verificata', 'value' => $richiesta['Richiesta']['verificata'])) ?>
                     <?php echo $this->element('toggle', array('record_id' => $richiesta['Richiesta']['id'], 'field'  => 'pubblica', 'value' => $richiesta['Richiesta']['pubblica'])) ?>
+                    <?php echo $this->element('toggle', array('record_id' => $richiesta['Richiesta']['id'], 'field'  => 'segnala_in_indice_sito', 'value' => $richiesta['Richiesta']['segnala_in_indice_sito'], 'label' => 'esporta')) ?>
+                
                 </td>
                 <?php endif; ?>	
                     

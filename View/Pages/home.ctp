@@ -38,9 +38,18 @@
             echo ' ' . $this->Facebook->sendbutton();?></p>
         <h1>Emergenza terremoto Emilia Romagna</h1><br>
         <p> La risposta al sisma che il 20 e 29 maggio 2012 ha colpito duramente la regione è enorme.</p>
-        <p> Oltre al lavoro della Protezione civile e delle autorità locali e nazionali, un fiume in piena di richieste ed offerte di aiuto di vario tipo, da parte di associazioni e singoli, si muove attraverso mille canali -contatti personali, telefono, email, social networks.</p>
-        <p> Questo sito cerca di favorire l'incontro, mettendo un po' di ordine tra le richieste ed offerte che si susseguono, arrivando a volte ormai superate, o con recapiti e numeri di telefono che andrebbero verificati. (si rischia, ad esempio, di intasare linee che dovrebbero restare libere)</p>
-        <p> Cerchiamo di ridurre il rischio di disperdere parte di questa grande ondata di solidarietà. Agire Sociale -come già stava facendo- è a disposizione per fungere da "filtro" ove possibile.</p>
+        <p> Oltre al lavoro della Protezione civile e delle autorità locali e nazionali, un fiume in piena di 
+            richieste ed offerte di aiuto di vario tipo, da parte di associazioni e singoli, si muove attraverso 
+            mille canali -contatti personali, telefono, email, social networks.
+        </p>
+        <p> Questo sito cerca di favorire l'incontro, mettendo un po' di ordine tra le richieste 
+            ed offerte che si susseguono, arrivando a volte ormai superate, o con recapiti e numeri di telefono 
+            che andrebbero verificati. (si rischia, ad esempio, di intasare linee che dovrebbero restare libere)
+        </p>
+        <p> Cerchiamo di ridurre il rischio di disperdere parte di questa grande ondata di solidarietà. 
+            I Centri di Servizio per il Volontariato delle province colpite, con modalità diverse a seconda della provincia ma 
+            comunque in rete, sono a disposizione per fungere da "filtro" ove possibile.
+        </p>
         <p> ATTENZIONE - nella fase di emergenza è molto difficile accettare volontari singoli, non appartenenti ad associazioni di protezione civile, privi di formazione. Ma possono esserci attività complementari e necessità che si protrannao nel tempo, oltre l'emergenza.
         </p>
         <p> Registrati ed <?php echo $this->Html->link('accedi', array('controller' => 'users', 'action' => 'login'), array('class' => 'btn')) ?> per partecipare! 
@@ -48,7 +57,7 @@
             I numeri di cellulare e altri dettagli non sono visibili a chi non è registrato.<br/>
             Sarà presto possibile usare il proprio profilo facebook come utente del sito.
         </p>
-        <p> Nota: questo sito è frutto di due giorni di lavoro, principalmente ad uso interno, ed è un work in progress: partiamo con la parte delle richieste; aggiungeremo presto nuove opzioni per gli utenti registrati, l'integrazione con facebook e la sezione delle offerte</p>
+        <p> Nota: questo sito è frutto di <strike>due giorni</strike> quattro giorni di lavoro, principalmente ad uso interno, ed è un work in progress: partiamo con la parte delle richieste; aggiungeremo presto nuove opzioni per gli utenti registrati, l'integrazione con facebook e la sezione delle offerte</p>
         <p> Per informazioni vedere il <a href="http://terremoto.volontariamo.it">sito regionale dedicato</a> a cura del CSV di Modena in collaborazione coi CSV dell'Emilia Romagna.
         
         <p> Per altre informazioni vedere anche su <a href="http://www.ferrarasociale.org/csv/news/2012/05/5241:Emergenza_terremoto_come_aiutare_ed_altre_informazioni">ferrarasociale.org</a> e gli <a href="http://miriguarda.it"> annunci su miriguarda.it</a></p>
@@ -60,7 +69,7 @@
       <hr>
 
       <footer>
-        <p>Un instant project di Agire Sociale CSV Ferrara</p>
+        <p>Un instant project di Agire Sociale CSV Ferrara - in Collaborazione con CSV Modena, Reggio Emilia, Bologna, Mantova </p>
       </footer>
 
     </div> <!-- /container -->

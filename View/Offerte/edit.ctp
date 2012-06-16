@@ -11,6 +11,7 @@
 		echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.id')));
                     
 		echo $this->Form->input('tipo_id');
+                echo $this->Form->input('categoria_id', array('empty' => '...'));
 		
 		echo $this->Form->input('telefono');
 		echo $this->Form->input('email');
