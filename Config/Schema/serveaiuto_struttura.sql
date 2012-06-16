@@ -2,7 +2,8 @@
 SQLyog Professional v9.20 
 MySQL - 5.1.53-community-log : Database - serveaiuto
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -141,24 +142,7 @@ CREATE TABLE `users` (
 
 /*Table structure for table `volontari` */
 
-DROP TABLE IF EXISTS `volontari`;
 
-CREATE TABLE `volontari` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `indirizzo` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefono` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cellulare` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `note` text COLLATE utf8_unicode_ci,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  `disponibile` tinyint(1) DEFAULT '1',
-  `disponibilita_certa` tinyint(1) DEFAULT '0',
-  `attivita_lista` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
