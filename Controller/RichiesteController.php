@@ -265,8 +265,9 @@ class RichiesteController extends AppController {
 		$tipi = $this->Richiesta->Tipo->find('list');
                 $province = $this->Richiesta->Provincia->find('list');
                 $categorie = $this->Richiesta->Categoria->find('list');
+                $tags = $this->Richiesta->Tag->find('list');
 		//$users = $this->Richiesta->User->find('list');
-		$this->set(compact('tipi', 'users', 'province', 'categorie'));
+		$this->set(compact('tipi', 'users', 'province', 'categorie', 'tags'));
 	}
 
 /**
@@ -305,8 +306,9 @@ class RichiesteController extends AppController {
 		$tipi = $this->Richiesta->Tipo->find('list');
                 $categorie = $this->Richiesta->Categoria->find('list');
                 $province = $this->Richiesta->Provincia->find('list');
+                $tags = $this->Richiesta->Tag->find('list');
 		//$users = $this->Richiesta->User->find('list');
-		$this->set(compact('tipi', 'users', 'province', 'categorie'));
+		$this->set(compact('tipi', 'users', 'province', 'categorie','tags'));
 	}
 
 /**

@@ -172,8 +172,9 @@ class OfferteController extends AppController {
 		$tipi = $this->Offerta->Tipo->find('list');                
                 $province = $this->Offerta->Provincia->find('list');
                 $categorie = $this->Offerta->Categoria->find('list');             
-		$this->set(compact('users', 'tipi','province', 'categorie'));
-		
+                $tags = $this->Offerta->Tag->find('list');
+                
+		$this->set(compact('users', 'tipi','province', 'categorie', 'tags'));
 	}
 
 /**
@@ -205,7 +206,8 @@ class OfferteController extends AppController {
 		$tipi = $this->Offerta->Tipo->find('list');
                 $province = $this->Offerta->Provincia->find('list');
                 $categorie = $this->Offerta->Categoria->find('list');    
-		$this->set(compact('users', 'tipi','province', 'categorie'));
+                $tags = $this->Offerta->Tag->find('list');
+		$this->set(compact('users', 'tipi','province', 'categorie', 'tags'));
 	}
         
         
