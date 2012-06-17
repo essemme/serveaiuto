@@ -10,11 +10,15 @@ Getting Started
 + Clone needed plugin in ~/cakephp-cakephp-4b81775/plugins as shown in https://gist.github.com/2941536
 
 #### Configuration
+##### Web Server
 + Configure your web server with ~/cakephp-cakephp-4b81775/serveaiuto/webroot/ as DocumentRoot
 + Enable mod\_rewrite If using Apache
-+ Run SQL files in ~/cakephp-cakephp-4b81775/serveaiuto/Config/Schema/
 
-##### Setting up configuration file
+##### MySQL
++ Create a new empty database
++ Run SQL files contained in ~/cakephp-cakephp-4b81775/serveaiuto/Config/Schema/ on it
+
+##### CakePHP configuration files
 + cd ~/cakephp-cakephp-4b81775/serveaiuto/Config
 + copy database.php.default to database.php and change settings as needed
 + do the same with email.php.default
@@ -23,4 +27,4 @@ Getting Started
 ``mkdir -p ~/cakephp-cakephp-4b81775/serveaiuto/tmp/{logs,cache}``
 
 #### Troubleshooting
-Look at error.log in directory ~/cakephp-cakephp-4b81775/serveaiuto/tmp/logs/
+If you get a "white response of death" look for error log in ~/cakephp-cakephp-4b81775/serveaiuto/tmp/logs/
