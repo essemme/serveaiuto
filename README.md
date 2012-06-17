@@ -7,7 +7,15 @@ Getting Started
 + Download Latest Stable Version of CakePHP from http://cakephp.org/ and extract it
 + Get in the extracted directory (e.g. ~/cakephp-cakephp-4b81775) and clone this repository
   ``git clone git://github.com/stefanomanfredini/serveaiuto.git``
-+ Clone needed plugin in ~/cakephp-cakephp-4b81775/plugins as shown in https://gist.github.com/2941536
++ Clone needed plugin in ~/cakephp-cakephp-4b81775/plugins
+``git clone https://github.com/cakephp/debug_kit DebugKit``
+``git clone git://github.com/rafaelbandeira3/linkable.git Linkable``
+``git clone git://github.com/dereuromark/tools.git Tools``
+``git clone https://github.com/voidet/sign\_me\_up.git SignMeUp``
+``git clone git://github.com/stefanomanfredini/AddressFinder-Helper---Plugin-for-cakephp-2.git AddressFinder``
+``git clone https://github.com/stefanomanfredini/cakephp-2.x-BookmarkletHelper Bookmarklet``
+``cd Tools``
+``git checkout 2.0``
 
 #### Configuration
 ##### Web Server
