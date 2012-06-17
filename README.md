@@ -10,3 +10,4 @@ Getting Started
 + Clone needed plugin in ~/cakephp-cakephp-4b81775/plugins as shown in https://gist.github.com/2941536
 + Configure your web server with ~/cakephp-cakephp-4b81775/serveaiuto/webroot/ as DocumentRout
 + If using Apache enable mod_rewrite
++ Run SQL files in ~/cakephp-cakephp-4b81775/serveaiuto/Config/Schema/
