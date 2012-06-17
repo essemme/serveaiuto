@@ -12,7 +12,7 @@ Getting Started
 ``git clone https://github.com/cakephp/debug_kit DebugKit``
 ``git clone git://github.com/rafaelbandeira3/linkable.git Linkable``
 ``git clone git://github.com/dereuromark/tools.git Tools``
-``git clone https://github.com/voidet/sign\_me\_up.git SignMeUp``
+``git clone https://github.com/voidet/sign_me_up.git SignMeUp``
 ``git clone git://github.com/stefanomanfredini/AddressFinder-Helper---Plugin-for-cakephp-2.git AddressFinder``
 ``git clone https://github.com/stefanomanfredini/cakephp-2.x-BookmarkletHelper Bookmarklet``
 ``cd Tools``
