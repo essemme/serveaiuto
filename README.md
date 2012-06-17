@@ -8,6 +8,7 @@ Getting Started
 + Get in the extracted directory (e.g. ~/cakephp-cakephp-4b81775) and clone this repository
   ``git clone git://github.com/stefanomanfredini/serveaiuto.git``
 + Clone needed plugin in ~/cakephp-cakephp-4b81775/plugins
+
 ``git clone https://github.com/cakephp/debug_kit DebugKit``
 ``git clone git://github.com/rafaelbandeira3/linkable.git Linkable``
 ``git clone git://github.com/dereuromark/tools.git Tools``
