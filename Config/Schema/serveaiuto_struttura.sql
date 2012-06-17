@@ -150,6 +150,21 @@ CREATE TABLE `tags`
   `slug` VARCHAR(255) UNIQUE
 ) ENGINE=MyISAM;
 
+DROP TABLE IF EXISTS `richieste_tags`;
+CREATE TABLE `richieste_tags`
+(
+    `richiesta_id` BIGINT NOT NULL,
+    `tag_id` BIGINT NOT NULL,
+    PRIMARY KEY (`richiesta_id`, `tag_id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `offerte_tags`;
+CREATE TABLE `offerte_tags`
+(
+    `offerta_id` BIGINT NOT NULL,
+    `tag_id` BIGINT NOT NULL,
+    PRIMARY KEY (`offerta_id`, `tag_id`)
+) ENGINE=MyISAM;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
