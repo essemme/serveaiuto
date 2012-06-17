@@ -21,7 +21,7 @@ Getting Started
 ##### CakePHP configuration files
 + cd ~/cakephp-cakephp-4b81775/serveaiuto/Config
 + copy database.php.default to database.php and change settings as needed
-+ do the same with email.php.default
++ do the same with email.php.default and facebook.php.default
 
 #### Logs and Cache directory
 ``mkdir -p ~/cakephp-cakephp-4b81775/serveaiuto/tmp/{logs,cache}``
