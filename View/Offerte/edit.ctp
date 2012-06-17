@@ -16,6 +16,7 @@
 		echo $this->Form->input('telefono');
 		echo $this->Form->input('email');
                 
+                echo $this->Form->input('tag_id', array('multiple' => true));
                 
                 if(AuthComponent::user('role_id') < 3 ) {
                     
