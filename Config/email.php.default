@@ -94,4 +94,12 @@ class EmailConfig {
 		//'headerCharset' => 'utf-8',
 	);
 
+
+	public $signMeUp = array(
+		'transport' => 'Mail',
+		'from' => 'me@me.com',
+		//'charset' => 'utf-8',
+		//'headerCharset' => 'utf-8',
+	);
+
 }
