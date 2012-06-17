@@ -142,6 +142,13 @@ CREATE TABLE `users` (
 
 /*Table structure for table `volontari` */
 
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags`
+(
+  `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
+  `nome`  VARCHAR(255) UNIQUE,
+  `slug` VARCHAR(255) UNIQUE
+) ENGINE=MyISAM;
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
