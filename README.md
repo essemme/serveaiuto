@@ -1,5 +1,9 @@
 ServeAiuto.org README
 =====================
+Abstract
+--------
+ServeAiuto.org (Need Help) is a Web site build for coordinating requests and offer of aid in the Emilia-Romagna, Italy area which has been recently hit by earthquake.
+
 Getting Started
 ---------------
 ### Setting up a local development copy
