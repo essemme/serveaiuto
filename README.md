@@ -2,7 +2,7 @@ ServeAiuto.org README
 =====================
 Abstract
 --------
-ServeAiuto.org (Need Help) is a Web site built with CakePHP for coordinating requests and offer of aid in the Emilia-Romagna, Italy area which has been recently hit by earthquake.
+ServeAiuto.org (Need Help) is a Web site built with CakePHP for coordinating requests and offers of aid in Emilia-Romagna, Italy area which has been recently hit by earthquake.
 
 Getting Started
 ---------------
