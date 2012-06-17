@@ -47,4 +47,5 @@ Console/Templates/_notes/dwsync.xml
 Controller/Component/_notes/dwsync.xml
 Config/core.php
 /Config/database.php
+/Config/email.php
 Config/core.php*
