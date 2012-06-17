@@ -27,5 +27,5 @@ Getting Started
 ``mkdir -p ~/cakephp-cakephp-4b81775/serveaiuto/tmp/{logs,cache}``
 
 #### Troubleshooting
-If you get a "white response of death" look for error log in ~/cakephp-cakephp-4b81775/serveaiuto/tmp/logs/
-Enable debugging in core.php ``Configure::write('debug', 2);`` instead of 0
++ If you get a "white response of death" look for error log in ~/cakephp-cakephp-4b81775/serveaiuto/tmp/logs/
++ Enable debugging in core.php ``Configure::write('debug', 2);`` instead of 0
