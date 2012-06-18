@@ -32,9 +32,9 @@ class OfferteTags extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Richiesta' => array(
-            'className' => 'Richiesta',
-            'foreignKey' => 'richiesta_id',
+        'Tag' => array(
+            'className' => 'Tag',
+            'foreignKey' => 'tag_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
