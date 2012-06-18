@@ -26,6 +26,7 @@
                     echo $this->Form->input('email', array('label' => 'email per risposta tramite il modulo sul sito (NON viene visualizzata pubblicamente)' ));
                     echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.id')));
                     
+                    echo $this->Form->input('taglist');
                     
                     if($this->Session->read('Auth.User.role_id') < 3) {    
                         

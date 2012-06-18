@@ -160,11 +160,10 @@ class OfferteController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Offerta->create();
-            $tags = Tag::tagListToTags($this->request->data['Offerta']['taglist']);
-
+            
             if ($this->Offerta->save($this->request->data)) {
+                $tags = Tag::tagListToTags($this->request->data['Offerta']['taglist']);
                 $this->setTags($this->Offerta, $tags);
-
 
                 $this->Session->setFlash(__('The offerta has been saved'));
                 $this->redirect(array('action' => 'index'));
@@ -195,9 +194,8 @@ class OfferteController extends AppController {
             throw new NotFoundException(__('Invalid offerta'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            $tags = Tag::tagListToTags($this->request->data['Offerta']['taglist']);
-
             if ($this->Offerta->save($this->request->data)) {
+                $tags = Tag::tagListToTags($this->request->data['Offerta']['taglist']);
                 $this->setTags($this->Offerta, $tags, true);
                 $this->Session->setFlash(__('The offerta has been saved'));
                 $this->redirect($this->Session->read('redirect'));
