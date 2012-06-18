@@ -34,9 +34,12 @@ class Tag extends AppModel {
         // for some weird reason array_walk won't work with trim
         $tags = array();
         foreach (explode(',', $tagList) as $tag) {
+            $tag = trim($tag);
             // avoids to use array_unique later
             if (!in_array($tag, $tags)) {
-                $tags[] = trim($tag);
+                if (strlen($tag) > 0) {
+                    $tags[] = $tag;
+                }
             }
         }
 
@@ -76,10 +79,11 @@ class Tag extends AppModel {
                 $slug = $oldSlug . $i++;
             }
 
-            $this->create(array('nome' =>  $nome, 'slug' => $slug));
+            $this->create(array('nome' => $nome, 'slug' => $slug));
             $tag = $this->save();
         }
-        
+
         return $tag['Tag']['id'];
     }
+
 }
