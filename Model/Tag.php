@@ -27,6 +27,11 @@ class Tag extends AppModel {
      */
     public static function tagListToTags($tagList)
     {
+        // otherwise function will return an empty string as first element
+        if(strlen(trim($tagList)) === 0) {
+            return array();
+        }
+        
         $tags = explode(',', $tagList);
         array_walk($tags, 'trim');
         
