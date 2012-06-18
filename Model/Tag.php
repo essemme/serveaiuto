@@ -19,6 +19,12 @@ class Tag extends AppModel {
         )
     );
     
+    /**
+     * Converts a comma separated tag list into an array, trimming tags
+     * 
+     * @param type $tagList
+     * @return array
+     */
     public static function tagListToTags($tagList)
     {
         $tags = explode(',', $tagList);
@@ -27,7 +33,13 @@ class Tag extends AppModel {
         return array_unique($tags);
     }
     
-    public static function tagsToTagList($tags)
+    /**
+     * Converts a tag array to a comma separated list, trimming tags
+     * 
+     * @param array $tags
+     * @return string
+     */
+    public static function tagsToTagList(array $tags)
     {
         array_walk($tags, 'trim');
         
