@@ -32,10 +32,16 @@ class Tag extends AppModel {
             return array();
         }
         
-        $tags = explode(',', $tagList);
-        array_walk($tags, 'trim');
+        // for some weird reason array_walk won't work with trim
+        $tags = array();
+        foreach(explode(',', $tagList) as $tag) {
+            // avoids to use array_unique later
+            if(!in_array($tag, $tags)) {
+                $tags[] = trim($tag);
+            }
+        }
         
-        return array_unique($tags);
+        return $tags;
     }
     
     /**
@@ -46,8 +52,11 @@ class Tag extends AppModel {
      */
     public static function tagsToTagList(array $tags)
     {
-        array_walk($tags, 'trim');
+        // array_walk not working
+        foreach($tags as $key => $tag) {
+            $tags[$key] = trim($tag);
+        }
         
-        return implode(', ', $tags);
+        return implode(', ', array_unique($tags));
     }
 }
