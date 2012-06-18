@@ -80,7 +80,8 @@ class Tag extends AppModel {
         }
         
         $this->create(array('nome' => $nome, 'slug' => $slug));
-        return $this->save();
+        $data = $this->save();
+        return $data[0];
     }
 
 }
