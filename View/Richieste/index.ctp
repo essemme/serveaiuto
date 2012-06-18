@@ -42,7 +42,7 @@
 	foreach ($richieste as $richiesta): ?>
        
             <?php 
-            $dove = '';
+            $dove = array();
             
             foreach($richiesta['Provincia'] as $prov) {               
                     
