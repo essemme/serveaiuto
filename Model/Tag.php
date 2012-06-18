@@ -18,4 +18,19 @@ class Tag extends AppModel {
             'rule' => '/^[a-z0-9_]$/'
         )
     );
+    
+    public static function tagListToTags($tagList)
+    {
+        $tags = explode(',', $tagList);
+        array_walk($tags, 'trim');
+        
+        return array_unique($tags);
+    }
+    
+    public static function tagsToTagList($tags)
+    {
+        array_walk($tags, 'trim');
+        
+        return implode(', ', $tags);
+    }
 }
