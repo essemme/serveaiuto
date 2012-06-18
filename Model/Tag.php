@@ -66,22 +66,20 @@ class Tag extends AppModel {
      */
     public function findOrCreate($nome) {
         $tag = $this->findByNome($nome);
-        
-        if ($tag !== false) {
-            return $tag['Tag']['id'];
-        }
 
-        $slug = $oldSlug = Inflector::slug($nome);
-        
-        $i = 1;
-        
-        while ($this->findBySlug($slug) !== false) {
-            $slug = $oldSlug . $i++;
+        if ($tag === false) {
+            $slug = $oldSlug = Inflector::slug($nome);
+
+            $i = 1;
+
+            while ($this->findBySlug($slug) !== false) {
+                $slug = $oldSlug . $i++;
+            }
+
+            $this->create(array('nome' =>  $nome, 'slug' => $slug));
+            $tag = $this->save();
         }
         
-        $this->create(array('nome' => $nome, 'slug' => $slug));
-        $data = $this->save();
-        return $data[0];
+        return $tag['Tag']['id'];
     }
-
 }
