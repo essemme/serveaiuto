@@ -15,7 +15,7 @@ class Tag extends AppModel {
             'rule' => 'notEmpty'
         ),
         'slug' => array(
-            'rule' => '/^[a-z0-9_]$/'
+            'rule' => 'notEmpty'
         )
     );
 
@@ -79,7 +79,8 @@ class Tag extends AppModel {
             $slug = $oldSlug . $i++;
         }
         
-        return $this->create(array('nome' => $nome, 'slug' => $slug));
+        $this->create(array('nome' => $nome, 'slug' => $slug));
+        return $this->save();
     }
 
 }
