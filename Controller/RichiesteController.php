@@ -195,13 +195,12 @@ class RichiesteController extends AppController {
                             }
                         }
                     }
-                }                
+                }
                 
                 $richieste = $this->paginate('Richiesta', $conditions);
 		$this->set('richieste', $richieste);
                 
-                $this->render($this->request->action);
-                
+                $this->render($this->request->action);                
 	}
         
         function index_public() {
@@ -217,7 +216,10 @@ class RichiesteController extends AppController {
             
             $this->layout = 'basic';
             $richieste = $this->Richiesta->esportabili($provincia_id);
+            
             $this->set('richieste', $richieste);
+            if(isset($this->request->params['named']['formato']) && $this->request->params['named']['formato'] == 'tabella')
+                $this->render ('esporta_tabella');
         }
         
         
