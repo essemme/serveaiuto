@@ -70,7 +70,16 @@ class DATABASE_CONFIG {
 		'encoding' => 'utf8',
 	);
         
-
+//        public $default = array(
+//		'datasource' => 'Database/Mysql',
+//		'persistent' => false,
+//		'host' => 'localhost',
+//		'login' => 'rynw2pi1b',
+//		'password' => 'QxNXAoUd7h',
+//		'database' => 'serveaiuto',
+//		'prefix' => '',
+//		'encoding' => 'utf8',
+//	);
 
 //	public $test = array(
 //		'datasource' => 'Database/Mysql',
