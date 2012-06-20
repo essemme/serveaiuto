@@ -1,7 +1,7 @@
 <div class="richieste view">
     <?php /* @var $this DummyView */ ?>
 <h2><?php  echo __('Richiesta');?></h2>
-<div class="row">
+    <div class="row">
         <div class="span9">
             <p><?php $this->Facebook->sendButton(); echo ' ';  ?> </p>
             <p>Inserito il:
