@@ -216,6 +216,8 @@ class RichiesteController extends AppController {
         $this->layout = 'basic';
         $richieste = $this->Richiesta->esportabili($provincia_id);
         $this->set('richieste', $richieste);
+        if(isset($this->request->params['named']['formato']) && $this->request->params['named']['formato'] == 'tabella')
+               $this->render ('esporta_tabella');
     }
 
     /**
