@@ -203,6 +203,7 @@ class RichiesteController extends AppController {
         $this->render($this->request->action);
     }
 
+        
     function index_public() {
         $this->index();
     }
@@ -241,6 +242,17 @@ class RichiesteController extends AppController {
 
     public function view_public($id = null) {
         $this->view($id);
+    }
+    
+    public function get_tags($search = null){
+        //$this->layout = 'basic';
+        $this->autoRender = false;
+        if(isset($this->request->query['term'])) {
+            $search = $this->request->query['term'];
+        }
+        $tags = $this->Richiesta->Tag->find('list',array('conditions' => array('nome LIKE ' => '%'.$search.'%') ) );
+        
+        return json_encode(array_values($tags));
     }
 
     /**

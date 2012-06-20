@@ -159,7 +159,7 @@ class Richiesta extends AppModel {
         }
         $esportabili = $this->find('all', array(
             'conditions' => $conditions,
-            'fields' => array('id', 'DISINCT cosa_serve', 'categoria_id', 'tipo_id'),
+            'fields' => array('DISTINCT (cosa_serve)', 'id',  'categoria_id', 'tipo_id'),
             'contain' => array(
                 'Categoria',
                 'Tipo',

@@ -137,8 +137,8 @@ class AppController extends Controller {
             //Logic to happen after successful facebook login.
             $this->Session->delete('provincia_id');
             $this->Session->setFlash('Autenticato correttamente', 'default', array('class' => 'information')); //, 'auth'
-                
-            $this->redirect('/richieste');
+                        
+            $this->redirect($this->referer());
         }
         
         protected function _provincia_attuale() {
