@@ -209,8 +209,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                                 array('target' => '_blank', 'escape' => false)
                         );
                 ?>
+            
+            <p>Un instant project di Agire Sociale CSV Ferrara - in Collaborazione con CSV Modena, Reggio Emilia, Bologna, Mantova </p>
+            <p>Con il contributo di <a href="http://hackathonterremoto.wordpress.com">Hackathon Terremoto</a> </p>
         </div>
    
+    
     <?php //echo $this->element('sql_dump'); ?>
     <?php echo $this->Facebook->init(); ?>
 </body>
