@@ -14,7 +14,10 @@
 		echo $this->Form->input('telefono');
 		echo $this->Form->input('email');
                 
-                echo $this->Form->input('taglist');
+                echo $this->element('multiple_autocomplete_snippet',array('field' => 'OffertaTaglist'));
+                echo '<div class="ui-widget">';
+                echo $this->Form->input('taglist', array('label' => 'parole chiave'));
+                echo '</div>';
                 
                 if(AuthComponent::user('role_id') < 3 ) {
                     echo $this->Html->image('verificata.png', array('style' => 'float:left; margin: 3px;'));

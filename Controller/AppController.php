@@ -148,7 +148,7 @@ class AppController extends Controller {
          */
         public function get_tags($model = null){
             //if not manually set, get current model
-            if(is_null($model)) $model = $this->modelClass;            
+            if(is_null($model)) $model = $this->modelClass;        
             
             //$this->layout = 'basic';
             $this->autoRender = false;
