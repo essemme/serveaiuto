@@ -176,6 +176,9 @@ class RichiesteController extends AppController {
                 $parameters['provincia'] = $prov;
         }
 
+        /*
+         * @todo query filters, refator as a method / generalize in AppControllet
+         */
         //add query filters based on named params
         $conditions = null;
         if (!empty($parameters)) {
@@ -204,6 +207,9 @@ class RichiesteController extends AppController {
     }
 
         
+    /**
+     *different actions mainly for view caching purposes.. 
+     */
     function index_public() {
         $this->index();
     }
@@ -244,17 +250,7 @@ class RichiesteController extends AppController {
         $this->view($id);
     }
     
-    public function get_tags($search = null){
-        //$this->layout = 'basic';
-        $this->autoRender = false;
-        if(isset($this->request->query['term'])) {
-            $search = $this->request->query['term'];
-        }
-        $tags = $this->Richiesta->Tag->find('list',array('conditions' => array('nome LIKE ' => '%'.$search.'%') ) );
-        
-        return json_encode(array_values($tags));
-    }
-
+    
     /**
      * add method
      *

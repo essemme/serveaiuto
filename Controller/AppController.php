@@ -141,6 +141,28 @@ class AppController extends Controller {
             $this->redirect($this->referer());
         }
         
+        
+        /**
+         * ajax function for getting autocomplete suggestions for tags
+         * @return string, json simple list of matching terms to feed jquery Ui multiple autocomplete
+         */
+        public function get_tags($model = null){
+            //if not manually set, get current model
+            if(is_null($model)) $model = $this->modelClass;            
+            
+            //$this->layout = 'basic';
+            $this->autoRender = false;
+            //should be set (at least 3 chards from javascript layer)
+            if(isset($this->request->query['term'])) {
+                $search = $this->request->query['term'];
+            }
+            //$this->modelClass is either Richiesta or Offerta
+            $tags = $this->{$model}->Tag->find('list',array('conditions' => array('nome LIKE ' => '%'.$search.'%') ) );
+            
+            return json_encode(array_values($tags));
+        }
+        
+        
         protected function _provincia_attuale() {
             if(!$this->Session->check('provincia_id')) {
                 if($this->Auth->loggedIn()) {
