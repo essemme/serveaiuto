@@ -1,4 +1,4 @@
-                        <a  href="#" class="btn btn-small tool-tip" rel="tooltip" title="<?php 
+                        <span  class="btn btn-small tool-tip" rel="tooltip" title="<?php 
                             $tags = array();
                             
                             foreach ( $tags_array as $tag ) {
@@ -11,4 +11,4 @@
                             echo count($tags_array);
                             ?>
                             Parole chiave
-                        </a>
+                        </span>
