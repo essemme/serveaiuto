@@ -28,6 +28,7 @@
                     
                     echo $this->element('multiple_autocomplete_snippet',array('field' => 'RichiestaTaglist'));
                     echo '<div class="ui-widget">';
+                    echo $this->Html->image('tag_parole_chiave.png',array('style' => 'float:left; padding-right:4px;'));
                     echo $this->Form->input('taglist', array('label' => 'parole chiave'));
                     echo '</div>';
                     
