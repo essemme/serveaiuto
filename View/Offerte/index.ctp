@@ -65,6 +65,7 @@
 	<tr>
 		<td><?php echo h($offerta['Offerta']['id']); ?>&nbsp;</td>
 		<td>
+                    
                     <?php if(!$offerta['Offerta']['pubblica']) echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
                     
                     <?php if(
@@ -79,6 +80,8 @@
                     <?php else : ?>
                                  Offerta "privata" (i recapiti sono accessibili solo agli admin).
                     <?php endif; ?>
+                    <br />
+                    <?php echo $this->element('tags_tooltip', array('tags_array' => $offerta['Tag'])); ?>
                 </td>
 		
 		<td>
@@ -151,3 +154,7 @@
 	</div>
 </div>
 
+
+<script>
+$('.tool-tip').tooltip()
+</script>

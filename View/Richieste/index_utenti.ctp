@@ -68,6 +68,9 @@
                 <td>
                     <?php echo $this->Html->link($richiesta['Tipo']['nome'], array('controller' => 'richieste', 'action' => 'index', 'tipo' => $richiesta['Tipo']['id'])); ?>
                     <br/>
+                    
+                        <?php echo $this->element('tags_tooltip', array('tags_array' => $richiesta['Tag'])); ?>
+                    
                     <?php
                     if (!is_null($richiesta['Richiesta']['scadenza'])){                                        
                         echo 'indic. entro il:'.  $this->Time->format('d-m-Y',$richiesta['Richiesta']['scadenza']); 
@@ -185,3 +188,7 @@
         <?php endif; ?>
 </div>
 
+
+<script>
+$('.tool-tip').tooltip()
+</script>

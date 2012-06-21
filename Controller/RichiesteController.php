@@ -16,6 +16,8 @@ class RichiesteController extends AppController {
 
     public $paginate = array('Richiesta' => array('order' => array('in_evidenza' => 'desc', 'created' => 'desc'), 'contain' => array(
                 'User' => array('fields' => array('id', 'username', 'email'), 'Provincia'),
+                'RichiesteTags',
+                'Tag',        
                 'Tipo',
                 'Categoria',
                 'Provincia'
@@ -23,6 +25,8 @@ class RichiesteController extends AppController {
             ));
     public $defaultContain = array(
         'User' => array('fields' => array('id', 'username', 'email'), 'Provincia'),
+        'RichiesteTags',
+        'Tag',
         'Tipo',
         'Categoria',
         'ProvinceRichieste',

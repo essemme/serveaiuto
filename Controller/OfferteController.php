@@ -13,6 +13,8 @@ class OfferteController extends AppController {
     public $paginate = array('Offerta' => array('order' => array('Offerta.in_evidenza' => 'desc', 'Offerta.id' => 'desc'), 'contain' => array(
                 'User' => array('fields' => array('id', 'username', 'email')),
                 'Tipo',
+                'OfferteTags',
+                'Tag',
                 'Categoria',
                 'Provincia'
             )
@@ -20,6 +22,8 @@ class OfferteController extends AppController {
     public $defaultContain = array(
         'User' => array('fields' => array('id', 'username', 'email')),
         'Tipo',
+        'OfferteTags',
+        'Tag',
         'Categoria',
         'OfferteProvince',
         'Provincia'
