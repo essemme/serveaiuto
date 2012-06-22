@@ -96,13 +96,13 @@
                      ?>
                 </td>
 		<td class="actions">
-			<?php echo $this->Html->link('Esamina', array('action' => 'view', $offerta['Offerta']['id']), array('class' => 'btn btn-mini')); ?>
+			<?php echo $this->Html->link('Esamina', array('controller' => 'offerte', 'action' => 'view', $offerta['Offerta']['id']), array('class' => 'btn btn-mini')); ?>
                     <?php if(AuthComponent::user('role_id') == 1 || AuthComponent::user('id') == $offerta['Offerta']['user_id']): ?>
-			<?php echo $this->Html->link('Modifica', array('action' => 'edit', $offerta['Offerta']['id']), array('class' => 'btn btn-mini')); ?>
-			<?php echo $this->Html->link('Completa', array('action' => 'completa', $offerta['Offerta']['id']), array('class' => 'btn-mini'));  ?>
+			<?php echo $this->Html->link('Modifica', array('controller' => 'offerte', 'action' => 'edit', $offerta['Offerta']['id']), array('class' => 'btn btn-mini')); ?>
+			<?php echo $this->Html->link('Completa', array('controller' => 'offerte', 'action' => 'completa', $offerta['Offerta']['id']), array('class' => 'btn-mini'));  ?>
                         <?php 
                         if(AuthComponent::user('role_id') == 1 )
-                            echo $this->Form->postLink('Elimina', array('action' => 'delete', $offerta['Offerta']['id']), array('class' => 'btn btn-mini'), __('Are you sure you want to delete # %s?', $offerta['Offerta']['id'])); ?>
+                            echo $this->Form->postLink('Elimina', array('controller' => 'offerte', 'action' => 'delete', $offerta['Offerta']['id']), array('class' => 'btn btn-mini'), __('Are you sure you want to delete # %s?', $offerta['Offerta']['id'])); ?>
                     <?php endif; ?>
                 </td>
 	</tr>

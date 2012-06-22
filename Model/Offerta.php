@@ -153,7 +153,7 @@ class Offerta extends AppModel {
         $this->titolo   = $richiesta['Richiesta']['cosa_serve'];
         $this->testo    = $richiesta['Richiesta']['testo'];
         $tipo_id = $richiesta['Richiesta']['tipo_id'];
-        $categoria_id = $richiesta['Richiesta']['testo'];
+        $categoria_id = $richiesta['Richiesta']['categoria_id'];
         
         //trick for using conditions in related habtm / hasmany model
         $this->bindModel(array('hasOne' => array('OfferteTags')), false);
