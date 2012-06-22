@@ -171,5 +171,8 @@ class Richiesta extends AppModel {
         );
         return $esportabili;
     }
+    
+    
+    
 
 }

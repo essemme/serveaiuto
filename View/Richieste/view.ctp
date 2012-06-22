@@ -101,7 +101,7 @@
     </div>
 </div>	
 
-<div class="modal hide" id="myModal" style="width:780px; height:700px;">
+<div class="modal hide" id="myModal" style="width:780px;">
     <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Offerta Suggerita</h3>
