@@ -140,4 +140,82 @@ class Offerta extends AppModel {
         ),
     );
 
+    
+    
+    /**
+     *
+     * @param type $richiesta the record we are matching against
+     * @return false if not a valid request, or array of matching offers sorted by relevance  
+     */
+    public function suggerisci_offerte ($richiesta) {
+        if(!is_array($richiesta)) return false;
+        //just to recap.. set variables form the relavant values of the record we are matching against
+        $this->titolo   = $richiesta['Richiesta']['cosa_serve'];
+        $this->testo    = $richiesta['Richiesta']['testo'];
+        $tipo_id = $richiesta['Richiesta']['tipo_id'];
+        $categoria_id = $richiesta['Richiesta']['testo'];
+        
+        //trick for using conditions in related habtm / hasmany model
+        $this->bindModel(array('hasOne' => array('OfferteTags')), false);
+        
+        //default conditions        
+        $conditions = array(
+            'Offerta.completa' => 0,
+            'Offerta.categoria_id' => $categoria_id,
+            'Offerta.tipo_id' => $tipo_id
+        );
+        $contain = array('OfferteTags','Provincia','Tag','Tipo','Categoria');
+        
+        $tags = $richiesta['Tag'];
+        if( !empty ($tags) ) {
+            foreach ($tags as $tag) {
+                $tags_id[] = $tag['id'];
+            }            
+            $conditions['OfferteTags.tag_id'] = $tags_id;
+            
+            //conta risultati per query più selettiva (conicidono tipo, categoria, tags)
+            $results_tags = $this->find('all', array(
+                'conditions' => $conditions,
+                'contain' => $contain 
+            ));
+            
+            $exclude_ids = Set::extract('/Offerta/id', $results_tags);
+        }
+        
+                
+        if(is_array($exclude_ids)) $conditions['not']['Offerta.id'] = $exclude_ids;
+        if (isset($results_tags) && count($results_tags) < 10) {
+            unset($conditions['Offerta.categoria_id']);
+            
+            $results_tipo = $this->find('all', array(
+                'conditions' => $conditions,
+                'contain' =>  $contain
+            ));
+        }
+        
+        if (count ($results_tipo) < 10) {
+            unset($conditions['OfferteTags.tag_id']);
+            
+            $results = $this->find('all', array(
+                'conditions' => $conditions,
+                'contain' => $contain
+            ));
+        }
+        
+        
+        
+        //first macro sort is by group (records found with strict conditions fisrt, with luosy conditions later)
+        //then sort each group by relevance
+        $results_tags   = $this->_sort_matches($results_tags, '3', 'offerta');
+        $results_tipo   = $this->_sort_matches($results_tipo,'2', 'offerta');
+        $results        = $this->_sort_matches($results, '1', 'offerta');
+        //sort..
+        //        
+        $offerte = array_merge($results_tags,$results_tipo, $results);
+           
+        return array_slice($offerte,0,10,true);
+    }
+    
+    
+    
 }

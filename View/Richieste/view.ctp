@@ -98,13 +98,23 @@
             
         </div>
     </div>
-		
+
+<?php if (!empty($offerte_suggerite)): ?>
+<div class="row">
+    <div class="span8">
+        <h3>Offerte suggerite</h3>
+        
+        <?php echo $this->element('offerte_index_snippet', array('offerte' => $offerte_suggerite)) ?>
+        
+    </div>
+</div>	
+<?php endif; ?>
                   <?php if($this->Session->read('Auth.User.role_id') < 3) : ?>
-                            <?php echo $this->Html->link('Modifica', array('action' => 'edit', $richiesta['Richiesta']['id'])); ?>
-                            <?php echo $this->Html->link('Completa', array('action' => 'completa', $richiesta['Richiesta']['id']));  ?>
+                            <?php echo $this->Html->link('Modifica', array('action' => 'edit', $richiesta['Richiesta']['id']), array('class' => 'btn')); ?>
+                            <?php echo $this->Html->link('Completa', array('action' => 'completa', $richiesta['Richiesta']['id']), array('class' => 'btn'));  ?>
                             <?php 
                             if($this->Session->read('Auth.User.role_id') < 2) 
-                            echo $this->Form->postLink('Elimina', array('action' => 'delete', $richiesta['Richiesta']['id']), null, __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
+                            echo $this->Form->postLink('Elimina', array('action' => 'delete', $richiesta['Richiesta']['id']), array('class' => 'btn'), __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
                             ?>
                  <?php endif; ?>
 </div>

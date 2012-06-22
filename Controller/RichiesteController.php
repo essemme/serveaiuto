@@ -243,7 +243,13 @@ class RichiesteController extends AppController {
         if (!$this->Richiesta->exists()) {
             throw new NotFoundException(__('Invalid richiesta'));
         }
-        $this->set('richiesta', $this->Richiesta->read(null, $id));
+        
+        $richiesta = $this->Richiesta->read(null, $id);
+        
+        if($this->_is_mine($richiesta)) {
+            $this->set('offerte_suggerite', $this->suggerisci($richiesta)); 
+        }
+        $this->set('richiesta', $richiesta);
     }
 
     public function view_utenti($id = null) {
@@ -253,6 +259,22 @@ class RichiesteController extends AppController {
     public function view_public($id = null) {
         $this->view($id);
     }
+    
+    public function suggerisci($richiesta) {
+        if(is_numeric($richiesta)) {
+            $richiesta = $this->Richiesta->read(null, $id);
+        }
+        
+        
+        $offerte_suggerite  = $this->Richiesta->User->Offerta->suggerisci_offerte($richiesta);
+        if($this->request->params['action'] == 'suggerisci') {
+            $this->set('offerte_suggerite', $offerte_suggerite);
+            $this->set('richiesta', $richiesta);
+        } else {
+            return $offerte_suggerite;
+        }
+    }
+    
     
     
     /**
