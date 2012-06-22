@@ -20,10 +20,8 @@
             <?php 
             $dove = array();
             
-            foreach($richiesta['Provincia'] as $prov) {               
-                    
+            foreach($richiesta['Provincia'] as $prov) {
                     $dove[] = $this->Html->link($prov['provincia'],array('action' => 'index', 'provincia' => $prov['id']));
-                
             }
             $dove = 'Province: ' .implode(', ', $dove);            
             
