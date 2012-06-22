@@ -134,6 +134,10 @@ class OfferteController extends AppController {
         }
 
         $offerta = $this->Offerta->read(null, $id);
+        
+        if($this->_is_mine($offerta)) {
+            $this->set('richieste_suggerite', $this->suggerisci($offerta)); 
+        }
 
         $offerta_privata = false;
         if ($this->Auth->user('role_id') == 2) {
@@ -144,7 +148,7 @@ class OfferteController extends AppController {
                     'recursive' => 2,
                     'conditions' => array('User.id' => $offerta['Offerta']['user_id']),
                     'contain' => array('Provincia')
-                        )
+                    )
                 );
                 $this->set(compact('riferimenti'));
 //                        $this->Session->setFlash("spiacente, l'offerta è privata - riservata agli amministratori - puoi contattare il csv di riferimento per infromazioni");
@@ -154,6 +158,21 @@ class OfferteController extends AppController {
             $this->_check_ownership_and_with_redirect($id);
         }
         $this->set(compact('offerta', 'offerta_privata'));
+    }
+    
+    
+    public function suggerisci($offerta) {
+        if(is_numeric($offerta)) {
+            $offerta = $this->Richiesta->read(null, $offerta);
+        }
+                
+        $richieste_suggerite  = $this->Offerta->User->Richiesta->suggerisci_richieste($offerta);
+        if($this->request->params['action'] == 'suggerisci') {
+            $this->set('richieste_suggerite', $richieste_suggerite);
+            $this->set('offerta', $offerta);
+        } else {
+            return $richieste_suggerite;
+        }
     }
 
     /**

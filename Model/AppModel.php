@@ -46,7 +46,7 @@ class AppModel extends Model {
      *
      * @param array $data_array     * 
      * @param string $sort_order (an integer as string)  main "group" sort - i.e. keep records matching by tags end type and category before those matching by type and category..
-     * @param string $text_field  name of the field (of the current model) we use to look for word macthes (eith main field of the related model)
+     * @param string $text_field  name of the field (of the current model) we use to look for word macthes (with main field of the related model)
      * @return array key sorted array, by word matches and then similar text percentage 
      */
     protected function _sort_matches ($data_array, $sort_order, $text_field = 'offerta') {

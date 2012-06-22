@@ -262,7 +262,7 @@ class RichiesteController extends AppController {
     
     public function suggerisci($richiesta) {
         if(is_numeric($richiesta)) {
-            $richiesta = $this->Richiesta->read(null, $id);
+            $richiesta = $this->Richiesta->read(null, $richiesta);
         }
         
         
@@ -295,7 +295,7 @@ class RichiesteController extends AppController {
                 $this->setTags($this->Richiesta, $tags);
                 
                 $this->Session->setFlash('Richiesta salvata.');
-                $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'view', $this->Richiesta->id));
             } else {
                 $this->Session->setFlash('Richiesta non salvata, riprovare');
             }
