@@ -210,7 +210,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
                         );
                 ?>            
             <p>Un instant project di <a href="http://ferrarasociale.org">Agire Sociale CSV Ferrara</a> - in Collaborazione con <a href="http://www.volontariao.it">CSV Modena</a>, <a href="http://www.darvoce.org">Reggio Emilia</a>, <a href="http://www.volabo.it">Bologna</a>, <a href="http://wwww.csvm.it">Mantova</a></p>
-            <p>Progetto di <a href="http://stefanomanfredini.info">SM</a> con il decisivo contributo di <a href="http://www.davidebellettini.com">Hackathon Terremoto</a>, si ringraziano in particolare per il prezioso contributo: <a href="http://iliasbartolini.dyndns.org/~brain/">Davide bellettini</a>, Dario Bottazzi, e la partecipazione di <a href="http://iliasbartolini.dyndns.org/~brain/">Ilias Bartolini</a></p>
+            <p>Progetto di <a href="http://stefanomanfredini.info">SM</a> con il decisivo contributo di <a href="http://hackathonterremoto.wordpress.com">Hackathon Terremoto</a>, si ringraziano in particolare per il prezioso contributo: <a href="http:///www.davidebellettini.com"">Davide bellettini</a>, Dario Bottazzi, e la partecipazione di <a href="http://iliasbartolini.dyndns.org/~brain/">Ilias Bartolini</a></p>
         </div>
    
     <?php //echo $this->element('sql_dump'); ?>
