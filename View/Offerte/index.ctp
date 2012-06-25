@@ -63,7 +63,21 @@
             ?>
         
 	<tr>
-		<td><?php echo h($offerta['Offerta']['id']); ?>&nbsp;</td>
+		<td>
+                    <?php echo h($offerta['Offerta']['id']); ?>
+                    <br />
+                    <?php 
+                    if($offerta['Offerta']['verificata']) 
+                        echo $this->Html->image('verificato.png', array('title' => 'Offerta verificata', 'alt' => 'Offerta verificata'));
+                    if($offerta['Offerta']['in_evidenza']) 
+                        echo $this->Html->image('in_evidenza.png', array('title' => 'Offerta in evidenza', 'alt' => 'Offerta in evidenza'));
+                    if($offerta['Offerta']['pubblica']) 
+                        echo $this->Html->image('org.png', array('title' => 'Offerta visibile alle organizzazioni (non solo agli admin)', 'alt' => 'Offerta visibile alle organizzazioni (non solo agli admin)'));
+                    echo ' ';
+                    ?>
+                </td>
+                
+                
 		<td>
                     
                     <?php if(!$offerta['Offerta']['pubblica']) echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
@@ -88,13 +102,7 @@
                     <?php echo $this->Html->link($offerta['Tipo']['nome'], array('controller' => 'offerte', 'action' => 'index', 'tipo' => $offerta['Tipo']['id'])); ?>
                 </td>
 		<td><?php 
-                    if($offerta['Offerta']['verificata']) 
-                        echo $this->Html->image('verificato.png', array('title' => 'Offerta verificata', 'alt' => 'Offerta verificata'));
-                    if($offerta['Offerta']['in_evidenza']) 
-                        echo $this->Html->image('in_evidenza.png', array('title' => 'Offerta in evidenza', 'alt' => 'Offerta in evidenza'));
-                    if($offerta['Offerta']['pubblica']) 
-                        echo $this->Html->image('org.png', array('title' => 'Offerta visibile alle organizzazioni (non solo agli admin)', 'alt' => 'Offerta visibile alle organizzazioni (non solo agli admin)'));
-                    echo ' ';
+                    
                     if($offerta['Offerta']['completa']) echo '<strike>';
                     echo nl2br($this->Text->truncate(h($offerta['Offerta']['offerta']))); 
                     if($offerta['Offerta']['completa']) echo '</strike>';

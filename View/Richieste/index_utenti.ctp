@@ -64,7 +64,21 @@
              ?>
             
 	<tr>
-		<td><?php echo h($richiesta['Richiesta']['id']); ?>&nbsp;</td>
+		<td>
+                    <?php echo h($richiesta['Richiesta']['id']); ?>
+                    <br />
+                        <?php 
+                    if($richiesta['Richiesta']['verificata']) 
+                        echo $this->Html->image('verificato.png', array('title' => 'richiesta verificata', 'alt' => 'richiesta verificata'));
+                    if($richiesta['Richiesta']['in_evidenza']) 
+                        echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
+                    if($richiesta['Richiesta']['pubblica']) 
+                        echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
+                     if($richiesta['Richiesta']['segnala_in_indice_sito']) 
+                        echo $this->Html->image('segnala.png', array('title' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)', 'alt' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)'));
+                    ?>
+                
+                </td>
                 <td>
                     <?php echo $this->Html->link($richiesta['Tipo']['nome'], array('controller' => 'richieste', 'action' => 'index', 'tipo' => $richiesta['Tipo']['id'])); ?>
                     <br/>
@@ -86,13 +100,6 @@
 		<td>
                     <strong>
                     <?php 
-                    if($richiesta['Richiesta']['verificata']) 
-                        echo $this->Html->image('verificato.png', array('title' => 'richiesta verificata', 'alt' => 'richiesta verificata')) . ' ';
-                    if($richiesta['Richiesta']['in_evidenza']) 
-                        echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
-                    if($richiesta['Richiesta']['pubblica']) 
-                        echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
-                    echo ' ';
                     
                     if($richiesta['Richiesta']['completa']) {
                         echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 
