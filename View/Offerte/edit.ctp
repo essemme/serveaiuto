@@ -37,7 +37,7 @@
                             'label' => 'visibile anche alle organizzazioni (non solo agli ammnistratori)')
                         );                        
                     }
-                    echo $this->Form->input('completa');
+                    echo $this->Form->input('completa', array('label' => 'completa: offerta non più attuale o andata a buon fine'));
                 }
 	?>
                     </div>

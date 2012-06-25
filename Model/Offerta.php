@@ -180,6 +180,17 @@ class Offerta extends AppModel {
             ));
             
             $exclude_ids = Set::extract('/Offerta/id', $results_tags);
+            
+            
+            unset($conditions['Offerta.categoria_id']);
+            if(is_array($exclude_ids)) $conditions['not']['Offerta.id'] = $exclude_ids;
+                        
+            $results_tags_only = $this->find('all', array(
+                'conditions' => $conditions,
+                'contain' => $contain 
+            ));
+            $exclude_ids = am($exclude_ids, Set::extract('/Offerta/id', $results_tags_only));
+            
         }
         
                 
@@ -206,7 +217,8 @@ class Offerta extends AppModel {
         
         //first macro sort is by group (records found with strict conditions fisrt, with luosy conditions later)
         //then sort each group by relevance
-        $results_tags   = $this->_sort_matches($results_tags, '3', 'offerta');
+        $results_tags   = $this->_sort_matches($results_tags, '4', 'offerta');
+        $results_tags   = $this->_sort_matches($results_tags_only, '3', 'offerta');
         $results_tipo   = $this->_sort_matches($results_tipo,'2', 'offerta');
         $results        = $this->_sort_matches($results, '1', 'offerta');
         //sort..

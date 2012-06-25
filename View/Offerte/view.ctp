@@ -93,9 +93,25 @@
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Richieste Suggerite</h3>
     </div>
-    <div class="modal-body">
-            
-        <?php echo $this->element('richieste_index_snippet', array('richieste' => $richieste_suggerite)) ?>
+    <div class="modal-body">               
+        
+        <p><strong>Attenzione!</strong> Questi sono solo "suggerimenti" selezionati automaticamente in base ai testi 
+            ed alle parole chiave specificate. Non c'è garanzia che siano quelli più pertinenti! 
+            Se cerchi qualcosa di specifico, puoi sempre usare <a href="/richieste/index">la funzione filtro nell'elenco delle richieste</a>.
+        </p>
+        
+        <?php if(!empty($richieste_top)) : ?>
+            <p>Alcune richieste che potrebbero coincidere, in base alle parole chiave specificate ed altri elementi del testo.</p>    
+            <?php echo $this->element('richieste_index_snippet', array('richieste' => $richieste_top)) ?>
+        <?php else: ?>
+            <h4>Non ci sono richieste coincidenti anche per parola chiave. Puoi veder gli altri suggeriemnti, ma sono probabilmente meno rilevanti</h4>
+        <?php endif; ?>
+        <?php if(!empty($richieste_suggerite)) : ?>
+            <p>Altre richieste che potrebbero avere rilevanza. I metodi automatici per determinare la rilevanza in base ai testi non danno garanzie, soprattutto con numeri non altissimi di elementi.
+                E' possibile che non c'entrino.. </p>    
+            <?php echo $this->element('richieste_index_snippet', array('richieste' => $richieste_suggerite)) ?>
+        <?php endif; ?>    
+                    
         
     </div>
     <div class="modal-footer">

@@ -167,6 +167,22 @@ class OfferteController extends AppController {
         }
                 
         $richieste_suggerite  = $this->Offerta->User->Richiesta->suggerisci_richieste($offerta);
+        
+        $richieste_top = array();
+        
+        //move "top" matches (those based on tags first) on a different array
+        foreach ($richieste_suggerite as $rid => $richiesta) {
+            
+            if(substr($rid,0,1) == '3' || substr($rid,0,1) == '4') {
+                $richieste_top[$rid] = $richiesta;
+                unset ($richieste_suggerite[$rid]); 
+            }
+        }        
+        
+        //debug ($offerte_top);
+        if(!empty($richieste_top)) 
+                $this->set('richieste_top', $richieste_top);        
+        
         if($this->request->params['action'] == 'suggerisci') {
             $this->set('richieste_suggerite', $richieste_suggerite);
             $this->set('offerta', $offerta);

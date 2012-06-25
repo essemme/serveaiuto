@@ -123,15 +123,15 @@
                 <?php endif; ?>	
                     
 		<td class="actions">
-			<?php echo $this->Html->link('Esamina', array('action' => 'view', $richiesta['Richiesta']['id']), array('class' => 'btn btn-mini')); ?>
+			<?php echo $this->Html->link('Esamina', array('controller' => 'offerte', 'action' => 'view', $richiesta['Richiesta']['id']), array('class' => 'btn btn-mini')); ?>
                         <?php if(AuthComponent::user('role_id') < 3) : ?>
                             <?php if(AuthComponent::user('role_id') < 2 || AuthComponent::user('id') == $richiesta['Richiesta']['user_id'] ) : ?>
-                                <?php echo $this->Html->link('Modifica', array('action' => 'edit', $richiesta['Richiesta']['id']), array('class' => 'btn-mini')); ?>
-                                <?php echo $this->Html->link('Completa', array('action' => 'completa', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'));  ?>
+                                <?php echo $this->Html->link('Modifica', array('controller' => 'offerte', 'action' => 'edit', $richiesta['Richiesta']['id']), array('class' => 'btn-mini')); ?>
+                                <?php echo $this->Html->link('Completa', array('controller' => 'offerte', 'action' => 'completa', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'));  ?>
                             <?php endif; ?>
                             <?php 
                             if(AuthComponent::user('role_id') < 2) 
-                            echo $this->Form->postLink('Elimina', array('action' => 'delete', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'), __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
+                            echo $this->Form->postLink('Elimina', array('controller' => 'offerte', 'action' => 'delete', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'), __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
                             ?>
                     
                         <?php endif; ?>

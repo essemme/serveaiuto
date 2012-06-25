@@ -208,13 +208,26 @@ class Richiesta extends AppModel {
             $results_tags = $this->find('all', array(
                 'conditions' => $conditions,
                 'contain' => $contain 
+            ));            
+            $exclude_ids = Set::extract('/Richiesta/id', $results_tags);
+            
+            
+            unset($conditions['Richiesta.categoria_id']);
+            if(is_array($exclude_ids)) $conditions['not']['Richiesta.id'] = $exclude_ids;
+            
+            $results_tags_only = $this->find('all', array(
+                'conditions' => $conditions,
+                'contain' => $contain 
             ));
             
-            $exclude_ids = Set::extract('/Richiesta/id', $results_tags);
+            $exclude_ids = am($exclude_ids, Set::extract('/Richiesta/id', $results_tags_only));
+            
+            
         }
         
                 
         if(is_array($exclude_ids)) $conditions['not']['Richiesta.id'] = $exclude_ids;
+        
         if (isset($results_tags) && count($results_tags) < 10) {
             unset($conditions['Richiesta.categoria_id']);
             
@@ -237,12 +250,13 @@ class Richiesta extends AppModel {
         
         //first macro sort is by group (records found with strict conditions fisrt, with luosy conditions later)
         //then sort each group by relevance
-        $results_tags   = $this->_sort_matches($results_tags, '3', 'cosa_serve');
-        $results_tipo   = $this->_sort_matches($results_tipo,'2', 'cosa_serve');
+        $results_tags   = $this->_sort_matches($results_tags, '4', 'cosa_serve');
+        $results_tags_only = $this->_sort_matches($results_tags_only, '3', 'cosa_serve');
+        $results_tipo   = $this->_sort_matches($results_tipo, '2', 'cosa_serve');
         $results        = $this->_sort_matches($results, '1', 'cosa_serve');
         //sort..
         //        
-        $richieste = array_merge($results_tags,$results_tipo, $results);
+        $richieste = array_merge($results_tags, $results_tags_only, $results_tipo, $results);
            
         return array_slice($richieste,0,10,true);
     }

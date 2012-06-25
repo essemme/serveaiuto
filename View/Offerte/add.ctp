@@ -33,7 +33,7 @@
                         'checked' => $this->Session->read('aperta')
                         )
                     );
-                    echo $this->Form->input('completa');
+                    //echo $this->Form->input('completa', array('label' => 'completa: offerta non più attuale o andata a buon fine'));
                 }
                 
 	?>

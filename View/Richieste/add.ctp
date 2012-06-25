@@ -46,9 +46,9 @@
                             echo $this->Form->input('pubblica');
                             
                             echo $this->Html->image('segnala.png', array('style' => 'float:left; margin: 3px;'));
-                            echo $this->Form->input('segnala_in_indice_sito');
+                            echo $this->Form->input('segnala_in_indice_sito', array('label' => 'esporta: segnala in indice visualizzabile in una finestra sul sito di riferimento per la provincia'));
                         }
-                        echo $this->Form->input('completa');
+                        //echo $this->Form->input('completa', array('label' => 'completa: offerta non più attuale o andata a buon fine'));
                     }
                     
                     ?>

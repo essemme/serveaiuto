@@ -104,11 +104,27 @@
 <div class="modal hide" id="myModal" style="width:780px;">
     <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Offerta Suggerita</h3>
+    <h3>Offerte Suggerite</h3>    
     </div>
     <div class="modal-body">
+        <p><strong>Attenzione!</strong> Questi sono solo "suggerimenti" selezionati automaticamente in base ai testi 
+            ed alle parole chiave specificate. Non c'è garanzia che siano quelli più pertinenti! 
+            Se cerchi qualcosa di specifico, puoi sempre usare <a href="/offerte/index">la funzione filtro nell'elenco delle offerte</a>.
+        </p>
+        
+        <?php if(!empty($offerte_top)) : ?>
+            <p>Alcune offerte che potrebbero coincidere, in base alle parole chiave specificate ed altri elementi del testo.</p>    
+            <?php echo $this->element('offerte_index_snippet', array('offerte' => $offerte_top)) ?>
+        <?php else: ?>
+            <h4>Non ci sono offerte coincidenti anche per parola chiave. Puoi veder gli altri suggeriemnti, ma sono probabilmente meno rilevanti</h4>
+        <?php endif; ?>
+        <?php if(!empty($offerte_suggerite)) : ?>
+            <p>Altre offerte che potrebbero avere rilevanza. I metodi automatici per determinare la rilevanza in base ai testi non danno garanzie, soprattutto con numeri non altissimi di elementi.
+                E' possibile che non c'entrino.. </p>    
+            <?php echo $this->element('offerte_index_snippet', array('offerte' => $offerte_suggerite)) ?>
+        <?php endif; ?>    
             
-        <?php echo $this->element('offerte_index_snippet', array('offerte' => $offerte_suggerite)) ?>
+        
         
     </div>
     <div class="modal-footer">
