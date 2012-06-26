@@ -106,7 +106,9 @@ class RichiesteController extends AppController {
             $from = array($this->request->data['Richiesta']['tua_email'] => $this->request->data['Richiesta']['tua_email']);
             if (empty($this->request->data['Richiesta']['tua_email']))
                 $email->from = array('noreply@serveaiuto.org' => 'Mail dal sito');
+            
             $to = array($richiesta['Richiesta']['email'] => $richiesta['Richiesta']['email']);
+            
             $ccn = array($richiesta['User']['email'] => $richiesta['User']['email'], 'promozione@csvferrara.it' => 'promozione@csvferrara.it');
 
             $subject = 'Risposta a: ' . $richiesta['Richiesta']['cosa_serve'];

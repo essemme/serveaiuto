@@ -36,12 +36,12 @@
         </div>
         <div>
             <h3>Dove, a chi serve</h3>
-            <p><?php echo nl2br($this->Text->autoLink (h($richiesta['Richiesta']['dove_a_chi']))); ?></p>
+            <p><?php echo nl2br($this->Text->autoLink ($richiesta['Richiesta']['dove_a_chi']) ); ?></p>
         </div>
 
         <div>
             <h3>Altre informazioni</h3>
-            <p><?php echo nl2br($this->Text->autoLink (h($richiesta['Richiesta']['testo']))); ?></p>
+            <p><?php echo nl2br($this->Text->autoLink ($richiesta['Richiesta']['testo']) ); ?></p>
         </div>
 
     </div>
