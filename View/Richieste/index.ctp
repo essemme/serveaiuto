@@ -24,14 +24,14 @@
         <?php //echo $this->Batch->create('Richiesta')?>	
 	<table class="table table-bordered table-striped" >
 	<tr>
-			<th>Id<?php //echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('id');?></th>
                         <th>Tipo<?php //echo $this->Paginator->sort('tipo_id');?>
-                            <br/>scadenza indicativa<?php //echo $this->Paginator->sort('scadenza', 'scadenza indicativa');?></th>
+                            <br/><?php echo $this->Paginator->sort('scadenza', 'scadenza indicativa');?></th>
 			<th>Cosa serve<?php //echo $this->Paginator->sort('cosa_serve');?></th>			
 			<th>Dove, a chi<?php //echo $this->Paginator->sort('dove_a_chi', 'dove, a chi');?></th>			
                         <?php if($this->Session->read('Auth.User.role_id') < 3 ) : ?>
                             <th>Inserimento, <?php //echo $this->Paginator->sort('created', 'inserimento');?><br/>
-                            Ultima modifica<?php //echo $this->Paginator->sort('modified', 'ultima modifica');?>, inserito da<?php //echo $this->Paginator->sort('user_id');?>
+                            <?php echo $this->Paginator->sort('modified', 'ultima modifica');?>, inserito da<?php //echo $this->Paginator->sort('user_id');?>
                             </th>
                             <th></th>
 			<?php endif; ?>			
@@ -116,7 +116,8 @@
                     ?>
                     </strong>
                     <br />
-                            [<?php echo $richiesta['Categoria']['categoria']; ?>]
+                    
+                            [<?php  echo $this->Html->link( $richiesta['Categoria']['categoria'], array('controller' => 'richieste', 'action' => 'index', 'categoria' => $richiesta['Categoria']['id'])); ?>]
                      
                 </td>		
 		<td>

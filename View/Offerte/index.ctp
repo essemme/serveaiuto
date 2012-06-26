@@ -106,15 +106,19 @@
 		<td>
                     <?php echo $this->Html->link($offerta['Tipo']['nome'], array('controller' => 'offerte', 'action' => 'index', 'tipo' => $offerta['Tipo']['id'])); ?>
                 </td>
-		<td><?php 
+		<td>
+                    <?php 
                     
                     if($offerta['Offerta']['completa']) echo '<strike>';
                     echo nl2br($this->Text->truncate(h($offerta['Offerta']['offerta']))); 
                     if($offerta['Offerta']['completa']) echo '</strike>';
                     
-                ?>&nbsp;
-                <br /> 
-                            [<?php echo $offerta['Categoria']['categoria']; ?>]
+                    ?>
+                    <br /> 
+
+                    [<?php  echo $this->Html->link( $offerta['Categoria']['categoria'], array('controller' => 'offerte', 'action' => 'index', 'categoria' => $offerta['Categoria']['id'])); ?>]
+                     
+                           
                 </td>
                 <td>
                         <?php if($dove != '') echo $dove; ?>
