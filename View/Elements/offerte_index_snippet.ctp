@@ -90,7 +90,7 @@
                 <td>                    
                     <?php echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'in_evidenza', 'value' => $offerta['Offerta']['in_evidenza'])) ?>
                     <?php echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'verificata', 'value' => $offerta['Offerta']['verificata'])) ?>
-                    <?php 
+                    <?php
                     if(AuthComponent::user('role_id') == 1) 
                         echo $this->element('toggle', array('record_id' => $offerta['Offerta']['id'], 'field'  => 'pubblica', 'value' => $offerta['Offerta']['pubblica'], 'label' => 'visibile alle org.')) 
                      ?>

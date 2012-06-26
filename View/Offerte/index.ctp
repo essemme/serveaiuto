@@ -73,14 +73,19 @@
                         echo $this->Html->image('in_evidenza.png', array('title' => 'Offerta in evidenza', 'alt' => 'Offerta in evidenza'));
                     if($offerta['Offerta']['pubblica']) 
                         echo $this->Html->image('org.png', array('title' => 'Offerta visibile alle organizzazioni (non solo agli admin)', 'alt' => 'Offerta visibile alle organizzazioni (non solo agli admin)'));
-                    echo ' ';
+                    
+                    //echo ' ';
                     ?>
+                    <?php 
+                    if(!$offerta['Offerta']['pubblica']) 
+                        echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); 
+                    ?>
+                    
                 </td>
                 
                 
 		<td>
                     
-                    <?php if(!$offerta['Offerta']['pubblica']) echo $this->Html->image('privata.png', array('title' => 'offerta riservata. Recapiti visibili solo agli admin, non alle organizzazioni ed altri utenti')); ?>
                     
                     <?php if(
                             AuthComponent::user('role_id') == 1 || 

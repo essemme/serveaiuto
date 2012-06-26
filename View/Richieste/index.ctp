@@ -140,7 +140,7 @@
                  <?php
                     $mostra = $richiesta['User']['username'];
                     if($this->Session->read('Auth.User.role_id') > 1) $mostra = 'Utente numero '. $richiesta['User']['id'];
-                    echo $this->Html->link($mostra, array('controller' => 'richieste', 'action' => 'index', $richiesta['User']['id'])); ?>
+                    echo $this->Html->link($mostra, array('controller' => 'richieste', 'action' => 'index', 'user' => $richiesta['User']['id'])); ?>
 		</td>
                 
                 <td>                    

@@ -42,11 +42,17 @@
 	?>
                     </div>
                      <div class="span4">
-                         <?php
-		
-		echo $this->Form->input('offerta');
-                echo $this->Form->input('Provincia', array('multiple' => 'checkbox'));
-	?>
+                        <?php
+                            echo $this->Form->input('offerta');
+                            echo $this->Form->input('Provincia', array('multiple' => 'checkbox'));
+                        ?>
+                        <h4>Dati opzionali, utili soprattutto per le offerte da parte di aziende</h4>
+                        <?php 
+                            echo $this->Form->input('sito');
+                            echo $this->Form->input('indirizzo');
+                            echo $this->Form->input('referente');
+                        ?>
+                    
                      </div>
                 </div>
 	</fieldset>

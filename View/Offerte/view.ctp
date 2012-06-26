@@ -61,7 +61,24 @@
 			<?php echo h($offerta['Offerta']['email']); ?>
 			&nbsp;
 		</dd>
-                
+                <dt><?php echo __('Sito'); ?></dt>
+		<dd>
+			<?php 
+                        if(!empty($offerta['Offerta']['sito']) && substr($offerta['Offerta']['sito'],0,7 ) != 'http://') 
+                                $offerta['Offerta']['sito'] = 'http://'. $offerta['Offerta']['sito'];
+                        echo $this->Text->autoLink($offerta['Offerta']['sito']); ?>
+			&nbsp;
+		</dd>
+                <dt><?php echo __('Indirizzo'); ?></dt>
+		<dd>
+			<?php echo h($offerta['Offerta']['indirizzo']); ?>
+			&nbsp;
+		</dd>
+                <dt><?php echo __('Referente'); ?></dt>
+		<dd>
+			<?php echo h($offerta['Offerta']['referente']); ?>
+			&nbsp;
+		</dd>
                 <?php endif; ?>
                 
 	</dl>
