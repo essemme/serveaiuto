@@ -16,8 +16,6 @@ class RichiesteController extends AppController {
 
     public $paginate = array('Richiesta' => array('order' => array('in_evidenza' => 'desc', 'created' => 'desc'), 'contain' => array(
                 'User' => array('fields' => array('id', 'username', 'email'), 'Provincia'),
-                'RichiesteTags',
-                'Tag',        
                 'Tipo',
                 'Categoria',
                 'Provincia'
@@ -25,8 +23,6 @@ class RichiesteController extends AppController {
             ));
     public $defaultContain = array(
         'User' => array('fields' => array('id', 'username', 'email'), 'Provincia'),
-        'RichiesteTags',
-        'Tag',
         'Tipo',
         'Categoria',
         'ProvinceRichieste',
@@ -106,9 +102,7 @@ class RichiesteController extends AppController {
             $from = array($this->request->data['Richiesta']['tua_email'] => $this->request->data['Richiesta']['tua_email']);
             if (empty($this->request->data['Richiesta']['tua_email']))
                 $email->from = array('noreply@serveaiuto.org' => 'Mail dal sito');
-            
             $to = array($richiesta['Richiesta']['email'] => $richiesta['Richiesta']['email']);
-            
             $ccn = array($richiesta['User']['email'] => $richiesta['User']['email'], 'promozione@csvferrara.it' => 'promozione@csvferrara.it');
 
             $subject = 'Risposta a: ' . $richiesta['Richiesta']['cosa_serve'];
@@ -182,9 +176,6 @@ class RichiesteController extends AppController {
                 $parameters['provincia'] = $prov;
         }
 
-        /*
-         * @todo query filters, refator as a method / generalize in AppControllet
-         */
         //add query filters based on named params
         $conditions = null;
         if (!empty($parameters)) {
@@ -212,10 +203,6 @@ class RichiesteController extends AppController {
         $this->render($this->request->action);
     }
 
-        
-    /**
-     *different actions mainly for view caching purposes.. 
-     */
     function index_public() {
         $this->index();
     }
@@ -228,7 +215,6 @@ class RichiesteController extends AppController {
 
         $this->layout = 'basic';
         $richieste = $this->Richiesta->esportabili($provincia_id);
-            
         $this->set('richieste', $richieste);
         if(isset($this->request->params['named']['formato']) && $this->request->params['named']['formato'] == 'tabella')
                $this->render ('esporta_tabella');
@@ -245,13 +231,7 @@ class RichiesteController extends AppController {
         if (!$this->Richiesta->exists()) {
             throw new NotFoundException(__('Invalid richiesta'));
         }
-        
-        $richiesta = $this->Richiesta->read(null, $id);
-        
-        if($this->_is_mine($richiesta)) {
-            $this->set('offerte_suggerite', $this->suggerisci($richiesta)); 
-        }
-        $this->set('richiesta', $richiesta);
+        $this->set('richiesta', $this->Richiesta->read(null, $id));
     }
 
     public function view_utenti($id = null) {
@@ -261,48 +241,7 @@ class RichiesteController extends AppController {
     public function view_public($id = null) {
         $this->view($id);
     }
-    
-    /**
-     * get suggested offers for this request (based on tags, words, whole text matches)
-     * 
-     * @param type $richiesta
-     * @return type 
-     */
-    public function suggerisci($richiesta) {
-        if(is_numeric($richiesta)) {
-            $richiesta = $this->Richiesta->read(null, $richiesta);
-        }
-        
-        $offerte_suggerite  = $this->Richiesta->User->Offerta->suggerisci_offerte($richiesta);
-        $offerte_top = array();
-        
-        //move "top" matches (those based on tags first) on a different array
-        foreach ($offerte_suggerite as $oid => $offerta) {
-            
-            if(substr($oid,0,1) == '3' || substr($oid,0,1) == '4') {
-                $offerte_top[$oid] = $offerta;
-                unset ($offerte_suggerite[$oid]); 
-            }
-        }
-        
-        
-        //debug ($offerte_top);
-        if(!empty($offerte_top)) 
-                $this->set('offerte_top', $offerte_top);
-        
-        if($this->request->params['action'] == 'suggerisci') {
-            
-            
-            debug($offerte_top);
-            $this->set('offerte_suggerite', $offerte_suggerite);
-            $this->set('richiesta', $richiesta);
-        } else {
-            return $offerte_suggerite;
-        }
-    }
-    
-    
-    
+
     /**
      * add method
      *
@@ -320,11 +259,48 @@ class RichiesteController extends AppController {
                 $tags = Tag::tagListToTags($this->request->data['Richiesta']['taglist']);
                 $this->setTags($this->Richiesta, $tags);
                 
+<<<<<<< HEAD
                 $this->Session->setFlash('Richiesta salvata.');
-                $this->redirect(array('action' => 'view', $this->Richiesta->id));
+                $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash('Richiesta non salvata, riprovare');
             }
+=======
+                if(!array_key_exists('provincia', $parameters)) {                
+                    $prov = $this->_filtra_per_provincia();
+                    if($prov) $parameters['provincia'] = $prov;
+                }
+                                
+                //add query filters based on named params
+                $conditions = null;
+                if(!empty($parameters)) {
+                    foreach($parameters as $pkey => $pvalue) {
+                        if(!in_array($pkey, array('dove_a_chi','cosa_serve'))) {
+                        
+                            if (in_array($pkey, array('completa'))) { //simple value 
+                                $conditions['Richiesta.'.$pkey] = $pvalue;
+                            } elseif (in_array($pkey, array('provincia'))) { //many to many, set habtm query and filter
+                                $conditions['ProvinceRichieste.'.$pkey .'_id'] = $pvalue;
+                                $this->paginate['Richiesta']['contain'] = $this->defaultContain;
+                                $this->Richiesta->bindModel(array('hasOne'=>array('ProvinceRichieste')), false);
+                                $this->paginate['Richiesta']['group'] = 'Richiesta.id';
+                                //debug($this->paginate); debug($this->Richiesta);
+                            } else { //id based belongs_to
+                                $conditions['Richiesta.'.$pkey.'_id'] = $pvalue;
+                            }
+                        }
+                    }
+                }
+                
+                $richieste = $this->paginate('Richiesta', $conditions);
+		$this->set('richieste', $richieste);
+                
+                $this->render($this->request->action);                
+	}
+        
+        function index_public() {
+            $this->index();
+>>>>>>> master
         }
         $tipi = $this->Richiesta->Tipo->find('list');
         $province = $this->Richiesta->Provincia->find('list');
@@ -369,6 +345,7 @@ class RichiesteController extends AppController {
                 $this->redirect($this->referer());
             }
             
+<<<<<<< HEAD
             $taglist = Tag::tagsToTagList($this->getTags($this->Richiesta, 'nome'));
             $this->request->data['Richiesta']['taglist'] = $taglist;
         }
@@ -398,6 +375,14 @@ class RichiesteController extends AppController {
         if ($this->Richiesta->delete()) {
             $this->Session->setFlash(__('Richiesta deleted'));
             $this->redirect(array('action' => 'index'));
+=======
+            $this->layout = 'basic';
+            $richieste = $this->Richiesta->esportabili($provincia_id);
+            
+            $this->set('richieste', $richieste);
+            if(isset($this->request->params['named']['formato']) && $this->request->params['named']['formato'] == 'tabella')
+                $this->render ('esporta_tabella');
+>>>>>>> master
         }
         $this->Session->setFlash(__('Richiesta was not deleted'));
         $this->redirect(array('action' => 'index'));

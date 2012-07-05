@@ -13,6 +13,8 @@ class OfferteController extends AppController {
     public $paginate = array('Offerta' => array('order' => array('Offerta.in_evidenza' => 'desc', 'Offerta.id' => 'desc'), 'contain' => array(
                 'User' => array('fields' => array('id', 'username', 'email')),
                 'Tipo',
+                'OfferteTags',
+                'Tag',
                 'Categoria',
                 'Provincia'
             )
@@ -20,6 +22,8 @@ class OfferteController extends AppController {
     public $defaultContain = array(
         'User' => array('fields' => array('id', 'username', 'email')),
         'Tipo',
+        'OfferteTags',
+        'Tag',
         'Categoria',
         'OfferteProvince',
         'Provincia'
@@ -130,6 +134,10 @@ class OfferteController extends AppController {
         }
 
         $offerta = $this->Offerta->read(null, $id);
+        
+        if($this->_is_mine($offerta)) {
+            $this->set('richieste_suggerite', $this->suggerisci($offerta)); 
+        }
 
         $offerta_privata = false;
         if ($this->Auth->user('role_id') == 2) {
@@ -140,7 +148,7 @@ class OfferteController extends AppController {
                     'recursive' => 2,
                     'conditions' => array('User.id' => $offerta['Offerta']['user_id']),
                     'contain' => array('Provincia')
-                        )
+                    )
                 );
                 $this->set(compact('riferimenti'));
 //                        $this->Session->setFlash("spiacente, l'offerta è privata - riservata agli amministratori - puoi contattare il csv di riferimento per infromazioni");
@@ -150,6 +158,37 @@ class OfferteController extends AppController {
             $this->_check_ownership_and_with_redirect($id);
         }
         $this->set(compact('offerta', 'offerta_privata'));
+    }
+    
+    
+    public function suggerisci($offerta) {
+        if(is_numeric($offerta)) {
+            $offerta = $this->Richiesta->read(null, $offerta);
+        }
+                
+        $richieste_suggerite  = $this->Offerta->User->Richiesta->suggerisci_richieste($offerta);
+        
+        $richieste_top = array();
+        
+        //move "top" matches (those based on tags first) on a different array
+        foreach ($richieste_suggerite as $rid => $richiesta) {
+            
+            if(substr($rid,0,1) == '3' || substr($rid,0,1) == '4') {
+                $richieste_top[$rid] = $richiesta;
+                unset ($richieste_suggerite[$rid]); 
+            }
+        }        
+        
+        //debug ($offerte_top);
+        if(!empty($richieste_top)) 
+                $this->set('richieste_top', $richieste_top);        
+        
+        if($this->request->params['action'] == 'suggerisci') {
+            $this->set('richieste_suggerite', $richieste_suggerite);
+            $this->set('offerta', $offerta);
+        } else {
+            return $richieste_suggerite;
+        }
     }
 
     /**

@@ -1,37 +1,13 @@
-<div class="richieste index">
-    <div class="row"> 
-        <div class="span6">
-            <h2><?php echo __('Richieste');?></h2>
-            <p> Puoi selezionare solo le richieste incomplete, oppure vedere solo quelle già completate, o tutte</p>
-            <p>
-                <a class="btn" href="/richieste/index/completa:all">Vedi tutte le richieste</a>
-                <a class="btn" href="/richieste/index/completa:0">Richieste ancora attive</a>
-                <a class="btn" href="/richieste/index/completa:1">Richieste completate</a>
-            </p>   
-            <p>
-                <?php echo $this->Html->link('Aggiungi nuova richiesta', array('controller' => 'richieste', 'action' => 'add'), array('class'=>"btn btn-info")); ?>
-
-            </p>
-        </div>
-        <div class="span3">
-            <?php 
-             //if(AuthComponent::user('role_id') < 3)     
-                echo $this->Filter->filterForm('Richiesta', array('legend' => 'Filtra'));  
-            ?>
-        </div>
-    </div>
-        
-        <?php //echo $this->Batch->create('Richiesta')?>	
-	<table class="table table-bordered table-striped" >
+<table class="table table-bordered table-striped" >
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th>Id<?php //echo $this->Paginator->sort('id');?></th>
                         <th>Tipo<?php //echo $this->Paginator->sort('tipo_id');?>
-                            <br/><?php echo $this->Paginator->sort('scadenza', 'scadenza indicativa');?></th>
+                            <br/>scadenza indicativa<?php //echo $this->Paginator->sort('scadenza', 'scadenza indicativa');?></th>
 			<th>Cosa serve<?php //echo $this->Paginator->sort('cosa_serve');?></th>			
 			<th>Dove, a chi<?php //echo $this->Paginator->sort('dove_a_chi', 'dove, a chi');?></th>			
                         <?php if($this->Session->read('Auth.User.role_id') < 3 ) : ?>
                             <th>Inserimento, <?php //echo $this->Paginator->sort('created', 'inserimento');?><br/>
-                            <?php echo $this->Paginator->sort('modified', 'ultima modifica');?>, inserito da<?php //echo $this->Paginator->sort('user_id');?>
+                            Ultima modifica<?php //echo $this->Paginator->sort('modified', 'ultima modifica');?>, inserito da<?php //echo $this->Paginator->sort('user_id');?>
                             </th>
                             <th></th>
 			<?php endif; ?>			
@@ -44,10 +20,8 @@
             <?php 
             $dove = array();
             
-            foreach($richiesta['Provincia'] as $prov) {               
-                    
+            foreach($richiesta['Provincia'] as $prov) {
                     $dove[] = $this->Html->link($prov['provincia'],array('action' => 'index', 'provincia' => $prov['id']));
-                
             }
             $dove = 'Province: ' .implode(', ', $dove);            
             
@@ -70,19 +44,7 @@
             ?>
             
 	<tr>
-		<td>
-                    <?php echo h($richiesta['Richiesta']['id']); ?><br />
-                    <?php 
-                    if($richiesta['Richiesta']['verificata']) 
-                        echo $this->Html->image('verificato.png', array('title' => 'richiesta verificata', 'alt' => 'richiesta verificata'));
-                    if($richiesta['Richiesta']['in_evidenza']) 
-                        echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
-                    if($richiesta['Richiesta']['pubblica']) 
-                        echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
-                     if($richiesta['Richiesta']['segnala_in_indice_sito']) 
-                        echo $this->Html->image('segnala.png', array('title' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)', 'alt' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)'));
-                    ?>
-                </td>
+		<td><?php echo h($richiesta['Richiesta']['id']); ?>&nbsp;</td>
                 <td>
 			<?php echo $this->Html->link($richiesta['Tipo']['nome'], array('controller' => 'richieste', 'action' => 'index', 'tipo' => $richiesta['Tipo']['id'])); ?>
                     <br/>
@@ -105,8 +67,16 @@
                 </td>
 		<td>
                     <strong>
+                    <?php 
+                    if($richiesta['Richiesta']['verificata']) 
+                        echo $this->Html->image('verificato.png', array('title' => 'richiesta verificata', 'alt' => 'richiesta verificata'));
+                    if($richiesta['Richiesta']['in_evidenza']) 
+                        echo $this->Html->image('in_evidenza.png', array('title' => 'richiesta in evidenza', 'alt' => 'richiesta in evidenza'));
+                    if($richiesta['Richiesta']['pubblica']) 
+                        echo $this->Html->image('pubblica.png', array('title' => 'richiesta pubblica (visibile con dettagli a utenti registrati)', 'alt' => 'richiesta pubblica (visibile con dettagli a utenti registrati)'));
+                     if($richiesta['Richiesta']['segnala_in_indice_sito']) 
+                        echo $this->Html->image('segnala.png', array('title' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)', 'alt' => 'richiesta esportabile (il "cosa" appare nella lista di necessità per provincia che può essere visualizzata su altri siti)'));
                     
-                    <?php
                     echo ' ';
                     if($richiesta['Richiesta']['completa']) {
                         echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 
@@ -116,8 +86,7 @@
                     ?>
                     </strong>
                     <br />
-                    
-                            [<?php  echo $this->Html->link( $richiesta['Categoria']['categoria'], array('controller' => 'richieste', 'action' => 'index', 'categoria' => $richiesta['Categoria']['id'])); ?>]
+                            [<?php echo $richiesta['Categoria']['categoria']; ?>]
                      
                 </td>		
 		<td>
@@ -141,7 +110,7 @@
                  <?php
                     $mostra = $richiesta['User']['username'];
                     if($this->Session->read('Auth.User.role_id') > 1) $mostra = 'Utente numero '. $richiesta['User']['id'];
-                    echo $this->Html->link($mostra, array('controller' => 'richieste', 'action' => 'index', 'user' => $richiesta['User']['id'])); ?>
+                    echo $this->Html->link($mostra, array('controller' => 'richieste', 'action' => 'index', $richiesta['User']['id'])); ?>
 		</td>
                 
                 <td>                    
@@ -154,15 +123,15 @@
                 <?php endif; ?>	
                     
 		<td class="actions">
-			<?php echo $this->Html->link('Esamina', array('action' => 'view', $richiesta['Richiesta']['id']), array('class' => 'btn btn-mini')); ?>
+			<?php echo $this->Html->link('Esamina', array('controller' => 'richieste', 'action' => 'view', $richiesta['Richiesta']['id']), array('class' => 'btn btn-mini')); ?>
                         <?php if(AuthComponent::user('role_id') < 3) : ?>
                             <?php if(AuthComponent::user('role_id') < 2 || AuthComponent::user('id') == $richiesta['Richiesta']['user_id'] ) : ?>
-                                <?php echo $this->Html->link('Modifica', array('action' => 'edit', $richiesta['Richiesta']['id']), array('class' => 'btn-mini')); ?>
-                                <?php echo $this->Html->link('Completa', array('action' => 'completa', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'));  ?>
+                                <?php echo $this->Html->link('Modifica', array('controller' => 'richieste', 'action' => 'edit', $richiesta['Richiesta']['id']), array('class' => 'btn-mini')); ?>
+                                <?php echo $this->Html->link('Completa', array('controller' => 'richieste', 'action' => 'completa', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'));  ?>
                             <?php endif; ?>
                             <?php 
                             if(AuthComponent::user('role_id') < 2) 
-                            echo $this->Form->postLink('Elimina', array('action' => 'delete', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'), __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
+                            echo $this->Form->postLink('Elimina', array('controller' => 'richieste', 'action' => 'delete', $richiesta['Richiesta']['id']), array('class' => 'btn-mini'), __('Are you sure you want to delete # %s?', $richiesta['Richiesta']['id'])); 
                             ?>
                     
                         <?php endif; ?>
@@ -172,41 +141,9 @@
         
 	</table>
         
-        <?php //echo $this->Batch->end(); ?>
         
-	<p>
-	<?php
-//	echo $this->Paginator->counter(array(
-//	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-//	));
-	?>	
-        </p>
-
-	<div class="pagination">
-	<?php
-		echo $this->Paginator->prev('<< ' , array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ' '));
-		echo $this->Paginator->next(' >>', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-        
-        <?php if(!empty($params)): ?>
-        <div class="row">
-            <div class="span8">
-            <?php 
-                        
-                        //debug($params);
-                        if(!empty($params))
-                            echo $this->element('show_map', array('params' => $params));
-                        
-             ?>
-            
-            </div>            
-        </div>
-        <?php endif; ?>
-</div>
+      
 
 <script>
 $('.tool-tip').tooltip()
 </script>
-

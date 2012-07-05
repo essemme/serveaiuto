@@ -42,9 +42,13 @@
 //                    if($richiesta['Richiesta']['completa']) {
 //                        echo '<strike>'. h($richiesta['Richiesta']['cosa_serve']).'</strike>'; 
 //                    } else {
-                        echo ' -- '.h($richiesta['Richiesta']['cosa_serve']).'<br />'; 
+                       // echo ' -- '.h($richiesta['Richiesta']['cosa_serve']).'<br />'; 
                    //}
-                    
+                    if($richieste[0]['ProvinceRichieste']['Provincia']['aperta']) {
+                        echo ' -- '.$this->Html->link($richiesta['Richiesta']['cosa_serve'], array('action' => 'view_public',$richiesta['Richiesta']['id']), array('target' => '_blank')).'<br />'; 
+                    } else {
+                        echo ' -- '.h($richiesta['Richiesta']['cosa_serve']).'<br />'; 
+                    }
                     
                     
                     

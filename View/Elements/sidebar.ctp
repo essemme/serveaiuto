@@ -1,20 +1,20 @@
 <?php /* @var $this DummyView */ ?>
 <div class="well sidebar-nav">
     <ul class="nav nav-list">
-        <li class="nav-header">Menu</li>
+        <li class="nav-header">Richieste</li>
         <li><?php echo $this->Html->link('Richieste', array('controller' => 'richieste', 'action' => 'index')); ?> </li>
         <li><strong><?php echo $this->Html->link('Aggiungi richiesta', array('controller' => 'richieste', 'action' => 'add')); ?></strong></li>
-
         <?php echo $this->element('_sidebar_block',array('block_title' => "Richieste per tipo", 'actual_controller' => 'richieste', 'actual_list' => $tipi_list, 'filter_param_name' => 'tipo')) ?>
-        </ul>
+    </ul>
 </div>
 <div class="well sidebar-nav">
     <ul class="nav nav-list">
         <li class="nav-header">Offerte</li>
         <li><?php echo $this->Html->link('Offerte', array('controller' => 'offerte', 'action' => 'index')); ?> </li>
         <li><strong><?php echo $this->Html->link('Aggiungi offerta', array('controller' => 'offerte', 'action' => 'add')); ?></strong></li>
+        
         <?php echo $this->element('_sidebar_block',array('block_title' => "Offerte per tipo", 'actual_controller' => 'offerte', 'actual_list' => $tipi_list, 'filter_param_name' => 'tipo')) ?>
-                </ul>
+    </ul>
 </div>
 <div class="well sidebar-nav">
     <ul class="nav nav-list">

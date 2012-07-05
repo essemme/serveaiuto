@@ -7,7 +7,13 @@
                         <th>Categoria<?php //echo $this->Paginator->sort('tipo_id');?>
                             </th>
 			<th>Cosa serve<?php //echo $this->Paginator->sort('cosa_serve');?></th>			
-			
+                        <?php 
+                        if($richieste[0]['ProvinceRichieste']['Provincia']['aperta']) {
+                            echo '<th>';
+                            echo '</th>';                        
+                        }
+                        ?>
+                       
 	</tr>
 	<?php
         $richiesta_precedente = 0;
@@ -55,9 +61,18 @@
                     
                     ?>
                     
-                    <?php //echo $this->Html->link('Esamina', array('action' => 'view_public', $richiesta['Richiesta']['id']), array('target' => '_top')); ?>
+                    
                 
                 </td>
+                
+                    <?php 
+                    if($richieste[0]['ProvinceRichieste']['Provincia']['aperta']) {
+                        echo '<td>';
+                        echo $this->Html->link('Esamina', array('action' => 'view_public', $richiesta['Richiesta']['id']), array('target' => '_blank', 'class' => 'btn')); 
+                        echo '</td>';                        
+                    }
+                    ?>
+                
                 
 	</tr>
 <?php endforeach; ?>
