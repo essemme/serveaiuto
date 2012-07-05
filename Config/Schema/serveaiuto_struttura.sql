@@ -2,8 +2,7 @@
 SQLyog Professional v9.20 
 MySQL - 5.1.53-community-log : Database - serveaiuto
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -35,12 +34,15 @@ CREATE TABLE `offerte` (
   `offerta` text COLLATE utf8_unicode_ci,
   `telefono` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sito` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `indirizzo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `referente` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `in_evidenza` tinyint(1) unsigned DEFAULT '0',
   `verificata` tinyint(1) DEFAULT '0',
   `completa` tinyint(1) unsigned DEFAULT '0',
   `pubblica` tinyint(1) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Table structure for table `offerte_province` */
 
@@ -52,6 +54,18 @@ CREATE TABLE `offerte_province` (
   `provincia_id` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Table structure for table `offerte_tags` */
+
+DROP TABLE IF EXISTS `offerte_tags`;
+
+CREATE TABLE `offerte_tags` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `offerta_id` bigint(20) NOT NULL,
+  `tag_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `offerta_id` (`offerta_id`,`tag_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Table structure for table `province` */
 
@@ -105,7 +119,32 @@ CREATE TABLE `richieste` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+
+/*Table structure for table `richieste_tags` */
+
+DROP TABLE IF EXISTS `richieste_tags`;
+
+CREATE TABLE `richieste_tags` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `richiesta_id` bigint(20) NOT NULL,
+  `tag_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `richiesta_id` (`richiesta_id`,`tag_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Table structure for table `tags` */
+
+DROP TABLE IF EXISTS `tags`;
+
+CREATE TABLE `tags` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nome` (`nome`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Table structure for table `tipi` */
 
@@ -142,31 +181,24 @@ CREATE TABLE `users` (
 
 /*Table structure for table `volontari` */
 
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags`
-(
-  `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
-  `nome`  VARCHAR(255) UNIQUE,
-  `slug` VARCHAR(255) UNIQUE
-) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `volontari`;
 
-DROP TABLE IF EXISTS `richieste_tags`;
-CREATE TABLE `richieste_tags`
-(
-    `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
-    `richiesta_id` BIGINT NOT NULL,
-    `tag_id` BIGINT NOT NULL,
-    UNIQUE KEY (`richiesta_id`, `tag_id`)
-) ENGINE=MyISAM;
-
-DROP TABLE IF EXISTS `offerte_tags`;
-CREATE TABLE `offerte_tags`
-(
-    `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
-    `offerta_id` BIGINT NOT NULL,
-    `tag_id` BIGINT NOT NULL,
-    UNIQUE KEY (`offerta_id`, `tag_id`)
-) ENGINE=MyISAM;
+CREATE TABLE `volontari` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `indirizzo` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telefono` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cellulare` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `note` text COLLATE utf8_unicode_ci,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `disponibile` tinyint(1) DEFAULT '1',
+  `disponibilita_certa` tinyint(1) DEFAULT '0',
+  `attivita_lista` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

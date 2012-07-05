@@ -34,8 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $components = array(
         'DebugKit.Toolbar', 
-        'Session', 
-          
+        'Session',           
         'Auth' => array(
             'loginAction' => array(
                 'controller' => 'users',
@@ -65,11 +64,12 @@ class AppController extends Controller {
         'Filter.Filter'
     );
     
-    public $helpers = array('Html','Js', 'Form', 'Time', 'Text', 'Session',
+    public $helpers = array(
+        'Html','Js', 'Form', 'Time', 'Text', 'Session',
+        'Facebook.Facebook' => array('redirect' => true),    
         'Filter.Filter' => array(  
             'nopersist' => array('index')
-        ), 
-        'Facebook.Facebook' => array('redirect' => true),    
+        ),         
         "TB" => array(
             "className" => "TwitterBootstrap.TwitterBootstrap"
         ),
@@ -79,6 +79,7 @@ class AppController extends Controller {
     
     
     public function beforeFilter() {
+        //debug($this->helpers); 
         
         $this->_common_elements();
         
@@ -87,7 +88,7 @@ class AppController extends Controller {
         $this->_check_aperta();
                 
         //includere TinyAuth
-        $this->Auth->authenticate = array('Form');
+        //$this->Auth->authenticate = array('Form');
         
         $this->Auth->allow(array('display')); //'index', 'view', 
         if($this->referer() == '/users/logout' && $this->Auth->user('id'))
@@ -96,7 +97,7 @@ class AppController extends Controller {
         /*
          * @todo add defaults for users permissions
          */
-                
+        
         
         parent::beforeFilter();
     }
@@ -104,6 +105,7 @@ class AppController extends Controller {
     /**
      * sets the session var "aperta" to the corresponding value of users's default province.
      * it is used to precompile (check) the "public" / visible to org. level users falg in offer / request add action
+     * and maybe some other dafault beahvour..
      */
         protected function _check_aperta() {
             if($this->Auth->user('id')) {
@@ -135,9 +137,31 @@ class AppController extends Controller {
             //Logic to happen after successful facebook login.
             $this->Session->delete('provincia_id');
             $this->Session->setFlash('Autenticato correttamente', 'default', array('class' => 'information')); //, 'auth'
-                
-            $this->redirect('/richieste');
+                        
+            $this->redirect($this->referer());
         }
+        
+        
+        /**
+         * ajax function for getting autocomplete suggestions for tags
+         * @return string, json simple list of matching terms to feed jquery Ui multiple autocomplete
+         */
+        public function get_tags($model = null){
+            //if not manually set, get current model
+            if(is_null($model)) $model = $this->modelClass;        
+            
+            //$this->layout = 'basic';
+            $this->autoRender = false;
+            //should be set (at least 3 chards from javascript layer)
+            if(isset($this->request->query['term'])) {
+                $search = $this->request->query['term'];
+            }
+            //$this->modelClass is either Richiesta or Offerta
+            $tags = $this->{$model}->Tag->find('list',array('conditions' => array('nome LIKE ' => '%'.$search.'%') ) );
+            
+            return json_encode(array_values($tags));
+        }
+        
         
         protected function _provincia_attuale() {
             if(!$this->Session->check('provincia_id')) {
@@ -226,7 +250,7 @@ class AppController extends Controller {
 
 
         /**
-        * hekper method to get from cache (or from db) the values for menu links in layout
+        * helper method to get from cache (or from db) the values for menu links in layout
         * @param type $modelName
         * @param type $name_for_list 
         */
@@ -234,14 +258,16 @@ class AppController extends Controller {
             if(is_null($name_for_list)) $name_for_list = Inflector::tableize ($modelName);
 
             if(!$list = Cache::read($name_for_list.'_list')) {
-                $ActualModel = ClassRegistry::init($modelName);            
-
+                App::uses($modelName, 'Model');
+                $ActualModel = new $modelName;            
+                //debug($ActualModel);
                 $list = $ActualModel->find('list',array(
                     'recursive' => -1,
                     'order' => array($modelName.'.id' => 'asc')
                 ));
                 Cache::write($name_for_list.'_list', $list);
             }
+            //debug($list);
             $this->set($name_for_list.'_list', $list);
         }
 }

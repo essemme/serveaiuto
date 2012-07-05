@@ -26,7 +26,11 @@
                     echo $this->Form->input('email', array('label' => 'email per risposta tramite il modulo sul sito (NON viene visualizzata pubblicamente)' ));
                     echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.id')));
                     
-                    echo $this->Form->input('taglist');
+                    echo $this->element('multiple_autocomplete_snippet',array('field' => 'RichiestaTaglist'));
+                    echo '<div class="ui-widget">';
+                    echo $this->Html->image('tag_parole_chiave.png',array('style' => 'float:left; padding-right:4px;'));
+                    echo $this->Form->input('taglist', array('label' => 'parole chiave - utili per suggerimenti automatici tra domanda e offerta'));
+                    echo '</div>';
                     
                     if($this->Session->read('Auth.User.role_id') < 3) {    
                         
@@ -42,9 +46,9 @@
                             echo $this->Form->input('pubblica');
                             
                             echo $this->Html->image('segnala.png', array('style' => 'float:left; margin: 3px;'));
-                            echo $this->Form->input('segnala_in_indice_sito');
+                            echo $this->Form->input('segnala_in_indice_sito', array('label' => 'esporta: segnala in indice visualizzabile in una finestra sul sito di riferimento per la provincia'));
                         }
-                        echo $this->Form->input('completa');
+                        //echo $this->Form->input('completa', array('label' => 'completa: offerta non più attuale o andata a buon fine'));
                     }
                     
                     ?>

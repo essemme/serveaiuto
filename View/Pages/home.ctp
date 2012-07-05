@@ -58,6 +58,7 @@
             Sarà presto possibile usare il proprio profilo facebook come utente del sito.
         </p>
         <p> Nota: questo sito è frutto di <strike>due giorni</strike> quattro giorni di lavoro, principalmente ad uso interno, ed è un work in progress: partiamo con la parte delle richieste; aggiungeremo presto nuove opzioni per gli utenti registrati, l'integrazione con facebook e la sezione delle offerte</p>
+        <p>Aggionramento: stiamo aggiungendo funzioni per facilitare il lavoro, un grosso aiuto è venuto da <a href="http://hackathonterremoto.wordpress.com">Hackathon Terremoto</a> (presto i ringraziamenti a tutti coloro che hanno contribuito) </p>
         <p> Per informazioni vedere il <a href="http://terremoto.volontariamo.it">sito regionale dedicato</a> a cura del CSV di Modena in collaborazione coi CSV dell'Emilia Romagna.
         
         <p> Per altre informazioni vedere anche su <a href="http://www.ferrarasociale.org/csv/news/2012/05/5241:Emergenza_terremoto_come_aiutare_ed_altre_informazioni">ferrarasociale.org</a> e gli <a href="http://miriguarda.it"> annunci su miriguarda.it</a></p>

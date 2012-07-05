@@ -35,6 +35,7 @@
         </div>
         <div>
             <h3>Riferimenti per informazioni</h3>
+            <p>Devi registrarti per poter vedere maggiorni dettagli. Altriemtni puoi contattare l'organizzazione di riferimento che può fare da tramite per la provincia specifica</p>
             <?php foreach ($richiesta['Provincia'] as $key => $prov) : ?>
                 <h4><?php echo nl2br(h($prov['provincia'])); ?></h4>
                 <p><?php echo nl2br($this->Text->autoLink(h($prov['riferimenti']))); ?></p>
@@ -59,6 +60,8 @@
     </div>
 
 </div>
+
+
     <div class="row">
         <div class="span8">
             <?php 
