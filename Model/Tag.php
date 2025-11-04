@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
 /**
  * Tag Model
  * 
- * @author Davide Bellettini <davide.bellettini@gmail.com>
+ * @author D. Bellettini
  */
 class Tag extends AppModel {
 
